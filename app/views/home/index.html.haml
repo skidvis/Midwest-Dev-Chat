@@ -14,7 +14,7 @@
         Thanks for signing up! You'll get an email soon.
     - else
       %h2 Join Us!
-      
+
       = form_tag( {:action => 'create'}, { :method => :post } ) do
         = text_field_tag(:email, nil, class: 'rounded inputs', placeholder: 'Email Address', required: true)
         %button{class: 'rounded signup-button', type: 'submit'}
