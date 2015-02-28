@@ -19,7 +19,7 @@ module LinkHelper
   end
 
   def self.find_urls_in_text(message)
-    message.gsub(/<(http\w*)>/){ Rinku.auto_link("#{$1}") }
+    message.gsub(/<(http.*)>/){ Rinku.auto_link("#{$1}") }
   end
 
   def self.add_new_user(user_id)
