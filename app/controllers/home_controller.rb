@@ -8,12 +8,13 @@ class HomeController < ApplicationController
   end
 
   def create
-    if params['email'].present?
+    if params['email'].present? && params['email'].include?('@')
       SignupMailer.signup(params['email']).deliver_later
 
       cookies[:signed_up] = true
-      redirect_to home_index_path
     end
+
+    redirect_to home_index_path
   end
 
   private

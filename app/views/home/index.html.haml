@@ -3,17 +3,18 @@
     What you missed in the #general channel..
   %ul
     - @messages.each do |message|
-      %li
+      %li.transparent
         = simple_format LinkHelper.process_links message
 
-.invite
-  %h2 Join Us!
+.invite.transparent
 
   .signup_controls
     - if cookies[:signed_up]
       %h1
         Thanks for signing up! You'll get an email soon.
     - else
+      %h2 Join Us!
+      
       = form_tag( {:action => 'create'}, { :method => :post } ) do
         = text_field_tag(:email, nil, class: 'rounded inputs', placeholder: 'Email Address', required: true)
         %button{class: 'rounded signup-button', type: 'submit'}

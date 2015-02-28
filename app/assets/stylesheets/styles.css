@@ -4,6 +4,14 @@ body, p, h1, h2, ul{
     font-family: sans-serif;
 }
 
+html {
+    background: url('/bg.png') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
 h1, h2{
     padding: 5px;
 }
@@ -13,6 +21,11 @@ li{
     padding: 4px;
     background-color: #eee;
     margin: 2px;
+}
+
+.transparent{
+    opacity: 0.9;
+    filter: alpha(opacity=90);
 }
 
 .header{
@@ -37,7 +50,7 @@ li{
 .invite{
     text-align: center;
     padding: 15px;
-    margin: 5px;
+    margin: 50px;
     background-color: #eee;
 }
 
