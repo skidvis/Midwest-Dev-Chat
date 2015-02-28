@@ -5,7 +5,7 @@ module LinkHelper
     message_with_urls = find_urls_in_text(message_with_member_names)
     message_date = DateTime.strptime(message['ts'],'%s').strftime('%m/%d %H:%M:%S')
 
-    "<span class='date'>#{message_date}</span> <span class='member' style='color: ##{user.color}'>#{user.name}:</span> <span>#{message_with_urls}</span>"
+    "<span class='date'>#{message_date}</span> <span class='member' style='color: ##{user.color}'>#{user.name}:</span> <span>#{message_with_urls}</span>" if user.present?
   end
 
   def self.find_members_in_text(message)
