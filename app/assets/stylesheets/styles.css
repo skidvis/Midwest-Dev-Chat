@@ -28,6 +28,18 @@ a{
     text-decoration: none;
 }
 
+pre{
+    border: solid 2px #bbb;
+    padding: 15px;
+    margin: 15px;
+    background-color: #ddd;
+
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px; /* future proofing */
+    -khtml-border-radius: 4px; /* for old Konqueror browsers */
+}
+
 .transparent{
     opacity: 0.9;
     filter: alpha(opacity=90);

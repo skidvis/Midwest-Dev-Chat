@@ -1,11 +1,13 @@
 module LinkHelper
   def self.process_links message
     user = Member.find_by_slack_id(message['user']) || add_new_user(message['user'])
-    message_with_member_names = find_members_in_text(message['text'])
-    message_with_urls = find_urls_in_text(message_with_member_names)
     message_date = DateTime.strptime(message['ts'],'%s').in_time_zone('Central Time (US & Canada)').strftime('%m/%d %H:%M:%S')
 
-    "<span class='date'>#{message_date}</span> <span class='member' style='color: ##{user.color}'>#{user.name}:</span> <span>#{message_with_urls}</span>"
+    message_with_member_names = find_members_in_text(message['text'])
+    message_with_urls = find_urls_in_text(message_with_member_names)
+    message_with_code = find_code_in_text(message_with_urls)
+
+    "<span class='date'>#{message_date}</span> <span class='member' style='color: ##{user.color}'>#{user.name}:</span> <span>#{message_with_code}</span>"
   end
 
   def self.find_members_in_text(message)
@@ -20,6 +22,10 @@ module LinkHelper
 
   def self.find_urls_in_text(message)
     message.gsub(/<(http.*)>/){ Rinku.auto_link("#{$1}") }
+  end
+
+  def self.find_code_in_text(message)
+    message.gsub(/`{3}(?:(.*$)\n)?([\s\S]*)`{3}/){ "<pre>#{$2}</pre>" }
   end
 
   def self.add_new_user(user_id)
