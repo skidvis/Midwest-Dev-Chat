@@ -64,8 +64,7 @@ a{
     vertical-align: top;
     margin-left: 5px;
     border-bottom: 2px solid #194ba3;
-    height: 48px;
-    margin-top: 6px;
+    height: 58px;
     font-size: 2rem;
     color: #fff;
     text-shadow: 0 1px 1px #555;
@@ -75,6 +74,7 @@ a{
     width: 300px;
     height: 48px;
     font-size: 2rem;
+    text-align: center;
 }
 
 .rounded{
@@ -83,7 +83,7 @@ a{
     -webkit-border-radius: 10px;
     border-radius: 10px; /* future proofing */
     -khtml-border-radius: 10px; /* for old Konqueror browsers */
-    padding: 5px;
+    padding: 5px 15px;
 }
 
 .float-right{
