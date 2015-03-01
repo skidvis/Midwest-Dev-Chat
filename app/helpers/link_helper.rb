@@ -1,11 +1,11 @@
 module LinkHelper
   def self.process_links message
-    user = Member.find_by_slack_id(message['user'])
+    user = Member.find_by_slack_id(message['user']) || add_new_user(message['user'])
     message_with_member_names = find_members_in_text(message['text'])
     message_with_urls = find_urls_in_text(message_with_member_names)
-    message_date = DateTime.strptime(message['ts'],'%s').strftime('%m/%d %H:%M:%S')
+    message_date = DateTime.strptime(message['ts'],'%s').in_time_zone('Central Time (US & Canada)').strftime('%m/%d %H:%M:%S')
 
-    "<span class='date'>#{message_date}</span> <span class='member' style='color: ##{user.color}'>#{user.name}:</span> <span>#{message_with_urls}</span>" if user.present?
+    "<span class='date'>#{message_date}</span> <span class='member' style='color: ##{user.color}'>#{user.name}:</span> <span>#{message_with_urls}</span>"
   end
 
   def self.find_members_in_text(message)
