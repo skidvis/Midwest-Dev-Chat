@@ -13,9 +13,20 @@
       %h1
         Thanks for signing up! You'll get an email soon.
     - else
-      %h2 Join Us!
+      %h2
+        = "We're currently #{Member.count} members strong. Join us!"
 
       = form_tag( {:action => 'create'}, { :method => :post } ) do
         = text_field_tag(:email, nil, class: 'rounded inputs', placeholder: 'Email Address', required: true)
         %button{class: 'rounded signup-button', type: 'submit'}
           Request invite
+
+.channels.transparent.rounded-lite
+  %h3
+    Check out all the cool channels!
+
+  %p
+    = @channels.join(", ")
+
+  %h4
+    Join the conversation!

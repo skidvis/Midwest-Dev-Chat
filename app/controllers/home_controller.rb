@@ -1,10 +1,12 @@
 class HomeController < ApplicationController
   require 'rails_rinku'
   before_filter :get_members
+  before_filter :get_channels
 
   def index
     response = HTTParty.get("https://slack.com/api/channels.history?token=#{Rails.application.secrets.slack_token}&channel=#{Rails.application.secrets.slack_channel}&pretty=1&count=15")
     @messages = response['messages']
+    @channels = Channel.all.pluck(:name)
   end
 
   def create
@@ -20,7 +22,7 @@ class HomeController < ApplicationController
   private
 
   def get_members
-    if Member.all.size == 0
+    if Member.count == 0
       members = HTTParty.get("https://slack.com/api/users.list?token=#{Rails.application.secrets.slack_token}&pretty=1")
       if members['ok'].presence
         members['members'].each do |member|
@@ -29,6 +31,21 @@ class HomeController < ApplicationController
             m.name = member['name']
             m.color = member['color']
             m.save
+          end
+        end
+      end
+    end
+  end
+
+  def get_channels
+    if Channel.count == 0
+      channels = HTTParty.get("https://slack.com/api/channels.list?token=#{Rails.application.secrets.slack_token}&pretty=1")
+      if channels['ok'].presence
+        channels['channels'].each do |channel|
+          new_channel = Channel.new do |c|
+            c.slack_id = channel['id']
+            c.name = channel['name']
+            c.save
           end
         end
       end

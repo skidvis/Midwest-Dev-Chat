@@ -82,6 +82,16 @@ pre{
     background-color: #eee;
 }
 
+.channels{
+    padding: 15px;
+    margin: 50px;
+    background-color: #eee;
+}
+
+.channels h3{
+    margin-top:0;
+}
+
 .signup-button{
     border: 0;
     vertical-align: top;
