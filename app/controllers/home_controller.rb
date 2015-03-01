@@ -6,7 +6,7 @@ class HomeController < ApplicationController
   def index
     channel_id = params['slack_id'] || Rails.application.secrets.slack_channel
     response = HTTParty.get("https://slack.com/api/channels.history?token=#{Rails.application.secrets.slack_token}&channel=#{channel_id}&pretty=1&count=15")
-    @messages = response['messages']
+    @messages = response['messages'].reverse!
     @channels = Channel.all
     @current_channel = Channel.find_by_slack_id(channel_id)
   end
