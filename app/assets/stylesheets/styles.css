@@ -16,16 +16,24 @@ h1, h2{
     padding: 5px;
 }
 
-ul{
+.messages ul{
     padding: 5px;
     background-color: #bbb;
 }
 
-li{
+.messages li{
     list-style-type: none;
     padding: 4px;
     background-color: #eee;
     margin: 2px;
+}
+
+.channels li{
+    display: inline-block;
+    border: solid 1px #ddd;
+    padding: 3px;
+    margin: 2px;
+    background-color: #fff;
 }
 
 a{

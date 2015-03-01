@@ -4,9 +4,11 @@ class HomeController < ApplicationController
   before_filter :get_channels
 
   def index
-    response = HTTParty.get("https://slack.com/api/channels.history?token=#{Rails.application.secrets.slack_token}&channel=#{Rails.application.secrets.slack_channel}&pretty=1&count=15")
+    channel_id = params['slack_id'] || Rails.application.secrets.slack_channel
+    response = HTTParty.get("https://slack.com/api/channels.history?token=#{Rails.application.secrets.slack_token}&channel=#{channel_id}&pretty=1&count=15")
     @messages = response['messages']
-    @channels = Channel.all.pluck(:name)
+    @channels = Channel.all
+    @current_channel = Channel.find_by_slack_id(channel_id)
   end
 
   def create
@@ -17,6 +19,10 @@ class HomeController < ApplicationController
     end
 
     redirect_to home_index_path
+  end
+
+  def set_channel
+    binding.pry
   end
 
   private

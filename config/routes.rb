@@ -3,5 +3,7 @@ Rails.application.routes.draw do
 
   root 'home#index'
 
-  post "/create" => "home#create", :as => :create
+  post '/create' => 'home#create', :as => :create
+  get '/home/index/:slack_id', to: 'home#index'
+
 end
