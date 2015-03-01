@@ -1,12 +1,12 @@
 .messages
   %h3
     What you missed in the #general channel..
-  %ul
+  %ul.transparent.rounded-lite
     - @messages.each do |message|
-      %li.transparent
+      %li.transparent.rounded-lite
         = simple_format LinkHelper.process_links message
 
-.invite.transparent
+.invite.transparent.rounded-lite
 
   .signup_controls
     - if cookies[:signed_up]

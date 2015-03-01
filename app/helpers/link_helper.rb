@@ -3,11 +3,12 @@ module LinkHelper
     user = Member.find_by_slack_id(message['user']) || add_new_user(message['user'])
     message_date = DateTime.strptime(message['ts'],'%s').in_time_zone('Central Time (US & Canada)').strftime('%m/%d %H:%M:%S')
 
-    message_with_member_names = find_members_in_text(message['text'])
-    message_with_urls = find_urls_in_text(message_with_member_names)
-    message_with_code = find_code_in_text(message_with_urls)
+    message = find_members_in_text(message['text'])
+    message = find_urls_in_text(message)
+    message = find_code_in_text(message)
+    message = find_emojis_in_text(message)
 
-    "<span class='date'>#{message_date}</span> <span class='member' style='color: ##{user.color}'>#{user.name}:</span> <span>#{message_with_code}</span>"
+    "<span class='date'>#{message_date}</span> <span class='member' style='color: ##{user.color}'>#{user.name}:</span> <span>#{message}</span>"
   end
 
   def self.find_members_in_text(message)
@@ -26,6 +27,13 @@ module LinkHelper
 
   def self.find_code_in_text(message)
     message.gsub(/`{3}(?:(.*$)\n)?([\s\S]*)`{3}/){ "<pre>#{$2}</pre>" }
+  end
+
+  def self.find_emojis_in_text(message)
+    message.gsub(/:(\w*):/) do
+      emoji = Regexp.last_match[1]
+      "<img src = '/emojis/#{emoji}.png' alt='#{emoji}' class='emoji' />"
+    end
   end
 
   def self.add_new_user(user_id)
