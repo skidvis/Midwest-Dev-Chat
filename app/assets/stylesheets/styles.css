@@ -50,6 +50,11 @@ pre{
     filter: alpha(opacity=90);
 }
 
+.description{
+    text-align: center;
+    color: #555;
+}
+
 .header{
     background-color: #eee;
 }

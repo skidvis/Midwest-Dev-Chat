@@ -1,7 +1,11 @@
 .messages
   %h3
-    What you missed in the #general channel..
+    Midwest Dev Chat is an invite-only, 
+    = link_to 'Slack-powered', 'http://slack.com'
+    message group.
   %ul.transparent.rounded-lite
+    %li.transparent.rounded-lite.description
+      The newest 15 messages in the super-cool #general channel.
     - @messages.each do |message|
       %li.transparent.rounded-lite
         = simple_format LinkHelper.process_links message
