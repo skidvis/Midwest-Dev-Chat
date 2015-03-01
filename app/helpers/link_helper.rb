@@ -16,7 +16,7 @@ module LinkHelper
       found_user_id = Regexp.last_match[1].split('|').first
       if found_user_id.present?
         found_user = Member.find_by_slack_id(found_user_id) || add_new_user(found_user_id)
-        "<span class='member' style='color:##{found_user.color}'>#{found_user.name}</span>"
+        "<span class='member' style='color:##{found_user.color}'>@#{found_user.name}</span>"
       end
     end
   end
