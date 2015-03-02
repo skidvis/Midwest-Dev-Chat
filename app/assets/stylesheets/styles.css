@@ -28,6 +28,12 @@ h1, h2{
     margin: 2px;
 }
 
+.messages li a{
+    position: relative;
+    display:inline-block;
+    width:inherit;
+}
+
 .channels li{
     display: inline-block;
     border: solid 1px #ddd;
