@@ -12,6 +12,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'httparty'
 gem 'haml-rails'
 gem 'rinku'
+gem 'ffaker'
 
 group :development, :test do
   gem 'jazz_hands'

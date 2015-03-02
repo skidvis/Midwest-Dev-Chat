@@ -8,7 +8,7 @@ module LinkHelper
     message = find_code_in_text(message)
     message = find_emojis_in_text(message)
 
-    "<span class='date'>#{message_date}</span> <span class='member' style='color: ##{user.color}'>user#{user.id}:</span> <span>#{message}</span>"
+    "<span class='date'>#{message_date}</span> <span class='member' style='color: ##{user.color}'>#{Faker::Name.first_name}:</span> <span>#{message}</span>"
   end
 
   def self.find_members_in_text(message)
@@ -16,7 +16,7 @@ module LinkHelper
       found_user_id = Regexp.last_match[1].split('|').first
       if found_user_id.present?
         found_user = Member.find_by_slack_id(found_user_id) || add_new_user(found_user_id)
-        "<span class='member' style='color:##{found_user.color}'>@user#{found_user.id}</span>"
+        "<span class='member' style='color:##{found_user.color}'>@#{Faker::Name.first_name}</span>"
       end
     end
   end

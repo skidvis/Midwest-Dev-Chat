@@ -67,6 +67,7 @@ GEM
     diffy (3.0.7)
     erubis (2.7.0)
     execjs (2.3.0)
+    ffaker (1.32.1)
     globalid (0.3.3)
       activesupport (>= 4.1.0)
     grit (2.0.0)
@@ -209,6 +210,7 @@ PLATFORMS
 
 DEPENDENCIES
   better_errors
+  ffaker
   haml-rails
   httparty
   jazz_hands
