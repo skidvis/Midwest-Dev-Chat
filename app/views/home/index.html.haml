@@ -3,12 +3,14 @@
     Midwest Dev Chat is an invite-only,
     = link_to 'Slack-powered', 'http://slack.com'
     message group.
-  %ul.transparent.rounded-lite{style: 'display: none;'}
+  %ul.transparent.rounded-lite
     %li.transparent.rounded-lite.description
       = simple_format "The newest 15 messages in the super-cool <strong>##{@current_channel.name}</strong> channel."
     - @messages.each do |message|
       %li.transparent.rounded-lite
         = simple_format LinkHelper.process_links message
+    %li.transparent.rounded-lite.description
+      *Usernames have been removed to protect the innocent.
 
 .invite.transparent.rounded-lite
 
@@ -32,6 +34,7 @@
   %ul
     - @channels.each do |channel|
       %li
-        = link_to "##{channel.name}", "/home/index/#{channel.slack_id}"
+        = "##{channel.name}"
+        -#= link_to "##{channel.name}", "/home/index/#{channel.slack_id}"
   %h4
     Join the conversation!
