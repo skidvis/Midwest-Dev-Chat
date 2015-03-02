@@ -4,6 +4,8 @@ class HomeController < ApplicationController
   before_filter :get_channels
 
   def index
+    Fake.all.each {|x| x.destroy}
+
     channel_id = params['slack_id'] || Rails.application.secrets.slack_channel
     response = HTTParty.get("https://slack.com/api/channels.history?token=#{Rails.application.secrets.slack_token}&channel=#{channel_id}&pretty=1&count=15")
     @messages = response['messages'].reverse!

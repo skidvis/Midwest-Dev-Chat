@@ -1,6 +1,8 @@
 module LinkHelper
   def self.process_links message
     user = Member.find_by_slack_id(message['user']) || add_new_user(message['user'])
+    fake = Fake.find_by_real_name(user.name) || add_new_fake(user.name)
+
     message_date = DateTime.strptime(message['ts'],'%s').in_time_zone('Central Time (US & Canada)').strftime('%m/%d %H:%M:%S')
 
     message = find_members_in_text(message['text'])
@@ -8,7 +10,7 @@ module LinkHelper
     message = find_code_in_text(message)
     message = find_emojis_in_text(message)
 
-    "<span class='date'>#{message_date}</span> <span class='member' style='color: ##{user.color}'>#{Faker::Name.first_name}:</span> <span>#{message}</span>"
+    "<span class='date'>#{message_date}</span> <span class='member' style='color: ##{user.color}'>#{fake.fake_name}:</span> <span>#{message}</span>"
   end
 
   def self.find_members_in_text(message)
@@ -16,7 +18,8 @@ module LinkHelper
       found_user_id = Regexp.last_match[1].split('|').first
       if found_user_id.present?
         found_user = Member.find_by_slack_id(found_user_id) || add_new_user(found_user_id)
-        "<span class='member' style='color:##{found_user.color}'>@#{Faker::Name.first_name}</span>"
+        fake = Fake.find_by_real_name(found_user.name) || add_new_fake(found_user.name)
+        "<span class='member' style='color:##{found_user.color}'>@#{fake.fake_name}</span>"
       end
     end
   end
@@ -45,5 +48,9 @@ module LinkHelper
     end
 
     member
+  end
+
+  def self.add_new_fake(name)
+    fake = Fake.create(real_name: name, fake_name: Faker::Name.first_name)
   end
 end
