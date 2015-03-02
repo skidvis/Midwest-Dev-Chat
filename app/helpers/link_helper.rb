@@ -22,7 +22,7 @@ module LinkHelper
   end
 
   def self.find_urls_in_text(message)
-    message.gsub(/<(http.*)>/){ Rinku.auto_link("#{$1}") }
+    message.gsub(/<(http.*)>/){ Rinku.auto_link("#{$1.split('|').first}") }
   end
 
   def self.find_code_in_text(message)
