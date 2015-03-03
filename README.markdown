@@ -12,7 +12,7 @@ I'm fairly certain there's better ways of handling some of the features I added,
 If you have the skills to improve or add features, please please please help us out!
 
 # Gotchas
-Two files are missing from this repo. The database.yml and secret.yml from the config folder. 
+Two files are missing from this repo. The database.yml and secrets.yml from the config folder.
 They have, um.. secrets, so I didn't think it would be wise to check them in. 
 
 This is what they look like, but the identities have been changed to protect the innocent
@@ -42,6 +42,7 @@ production:
 ## secrets.yml
 ```ruby
 development:
+  title: # the name of the site
   secret_key_base: # all about that base.
   slack_token: # api access token from slack
   slack_channel: C02GHRETZ # the slack id for the #general channel 
@@ -53,6 +54,7 @@ test:
   secret_key_base: # all your base are belong to us, for tests.
 
 production:
+  title: # the name of the site
   secret_key_base: # I'm rob base and I came to get down, to business.
   slack_token: # api access token from slack
   slack_channel: C02GHRETZ # the slack id for the #general channel 
