@@ -1,6 +1,7 @@
 .messages
   %h3
-    Midwest Dev Chat is an invite-only,
+    = Rails.application.secrets.title
+    is an invite-only,
     = link_to 'Slack-powered', 'http://slack.com'
     message group.
   %ul.transparent.rounded-lite

@@ -1,7 +1,8 @@
 !!!
 %html
 %head{:profile => "http://www.w3.org/2005/10/profile"}/
-%title Midwest Dev Chat
+%title
+  = Rails.application.secrets.title
 = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
 = javascript_include_tag 'application', 'data-turbolinks-track' => true
 %link{:href => 'http://midwestdevchat.com/favicon.ico', :rel => 'icon', :type => 'image/png'}/
@@ -16,8 +17,13 @@
 %body
   .header.transparent
     %h1
-      = link_to 'Midwest Dev Chat', '/', style: 'color:#000;'
+      = link_to Rails.application.secrets.title, '/', style: 'color:#000;'
       %span.float-right
         = link_to 'github.com/skidvis/Midwest-Dev-Chat', 'https://github.com/skidvis/Midwest-Dev-Chat'
   .content
     = yield
+
+:javascript
+  $(document).ready(function () {
+     $('#email').focus();
+  });
