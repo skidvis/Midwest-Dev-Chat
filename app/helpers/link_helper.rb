@@ -25,7 +25,18 @@ module LinkHelper
   end
 
   def self.find_urls_in_text(message)
-    message.gsub(/<(http.*)>/){ Rinku.auto_link("#{$1.split('|').first}") }
+    message.gsub(/<(http.*)>/) do
+      matched_content = $1
+      if matched_content.include?('.gif')
+        if message.include?('uploaded')
+          "<span class='private'>Private image uploaded, members only. Sorry.</span>"
+        else
+          "<img src='#{matched_content.split('|').first}' />"
+        end
+      else
+        Rinku.auto_link("#{matched_content.split('|').first}")
+      end
+    end
   end
 
   def self.find_code_in_text(message)

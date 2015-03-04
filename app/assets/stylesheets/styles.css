@@ -101,6 +101,14 @@ pre{
     background-color: #eee;
 }
 
+.private{
+    color: #777;
+    font-size: 12px;
+    text-transform: uppercase;
+    padding: 2px;
+    line-height: 15px;
+}
+
 .channels{
     padding: 15px;
     margin: 50px;
