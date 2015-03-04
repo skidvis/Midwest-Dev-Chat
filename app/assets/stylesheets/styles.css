@@ -160,3 +160,11 @@ pre{
     float: right;
     font-size: 14px;
 }
+
+.hidden{
+    display: none;
+}
+
+.hidden:before{
+    content: 'Hi mom';
+}

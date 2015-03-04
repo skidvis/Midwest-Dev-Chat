@@ -26,4 +26,8 @@
 :javascript
   $(document).ready(function () {
      $('#email').focus();
+
+     $('.hidden-gif').bind('click', function(){
+      $(this).children().toggle();
+     })
   });

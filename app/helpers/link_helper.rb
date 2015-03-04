@@ -5,8 +5,9 @@ module LinkHelper
 
     message_date = DateTime.strptime(message['ts'],'%s').in_time_zone('Central Time (US & Canada)').strftime('%m/%d %H:%M:%S')
 
+    uuid = "#{message['user']}-#{message['ts']}"
     message = find_members_in_text(message['text'])
-    message = find_urls_in_text(message)
+    message = find_urls_in_text(message, uuid)
     message = find_code_in_text(message)
     message = find_emojis_in_text(message)
 
@@ -24,14 +25,14 @@ module LinkHelper
     end
   end
 
-  def self.find_urls_in_text(message)
+  def self.find_urls_in_text(message, uuid)
     message.gsub(/<(http.*)>/) do
       matched_content = $1
       if matched_content.include?('.gif')
         if message.include?('uploaded')
           "<span class='private'>Private image uploaded, members only. Sorry.</span>"
         else
-          "<img src='#{matched_content.split('|').first}' />"
+          "<span class='private hidden-gif'>Animated Gif [click to view] <img id='#{uuid}' class='hidden' src='#{matched_content.split('|').first}' /></span>"
         end
       else
         Rinku.auto_link("#{matched_content.split('|').first}")
