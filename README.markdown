@@ -49,6 +49,10 @@ development:
   admin_email: # the email address of an admin who will get notified of a new member request
   sendgrid_user: # sendgrid username
   sendgrid_password: # sendgrid password
+  restricted_channels:
+  - # array items
+  - # of restricted channels
+  - # by channel.name
 
 test:
   secret_key_base: # all your base are belong to us, for tests.
@@ -61,6 +65,10 @@ production:
   admin_email: # the email address of an admin who will get notified of a new member request
   sendgrid_user: # sendgrid username
   sendgrid_password: # sendgrid password
+  restricted_channels:
+  - # array items
+  - # of restricted channels
+  - # by channel.name
 ```
 
 ## That's it!

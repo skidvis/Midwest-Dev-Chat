@@ -6,7 +6,7 @@
     message group.
   %ul.transparent.rounded-lite
     %li.transparent.rounded-lite.description
-      = simple_format "The newest 15 messages in the super-cool <strong>##{@current_channel.name}</strong> channel."
+      = simple_format "The newest 15 messages in the super-cool <strong>##{@current_channel}</strong> channel."
     - @messages.each do |message|
       %li.transparent.rounded-lite
         = simple_format LinkHelper.process_links message
@@ -35,7 +35,9 @@
   %ul
     - @channels.each do |channel|
       %li
-        = "##{channel.name}"
-        -#= link_to "##{channel.name}", "/home/index/#{channel.slack_id}"
+        - if Rails.application.secrets.restricted_channels.any?{ |rc| channel.name.include? rc }
+          = "##{channel.name}"
+        - else
+          = link_to "##{channel.name}", "/home/index/#{channel.name}", style: 'color: #000;'
   %h4
     Join the conversation!
