@@ -164,7 +164,3 @@ pre{
 .hidden{
     display: none;
 }
-
-.hidden:before{
-    content: 'Hi mom';
-}
