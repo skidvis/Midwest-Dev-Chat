@@ -6,6 +6,8 @@
 = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
 = javascript_include_tag 'application', 'data-turbolinks-track' => true
 %link{:href => 'http://midwestdevchat.com/favicon.ico', :rel => 'icon', :type => 'image/png'}/
+%link{:href => "//cdn.rawgit.com/noelboss/featherlight/1.2.0/release/featherlight.min.css", :rel => "stylesheet", :title => "Featherlight Styles", :type => "text/css"}/
+%script{:charset => "utf-8", :src => "//cdn.rawgit.com/noelboss/featherlight/1.2.0/release/featherlight.min.js", :type => "text/javascript"}
 
 %meta{:content => "Midwest Dev Chat", :property => "og:title"}/
 %meta{:content => "website", :property => "og:type"}/
@@ -28,6 +30,6 @@
      $('#email').focus();
 
      $('.hidden-gif').bind('click', function(){
-      $(this).children().toggle();
+      $.featherlight($(this).children());
      })
   });
