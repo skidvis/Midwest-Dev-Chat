@@ -46,6 +46,8 @@ class HomeController < ApplicationController
   end
 
   def get_channels
+    Channel.all.each {|x| x.destroy}
+
     if Channel.count == 0
       channels = HTTParty.get("https://slack.com/api/channels.list?token=#{Rails.application.secrets.slack_token}&pretty=1")
       if channels['ok'].presence
