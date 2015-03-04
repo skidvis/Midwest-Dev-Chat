@@ -25,13 +25,15 @@ module LinkHelper
   end
 
   def self.find_urls_in_text(message)
+    image_formats = %w(.gif .jpg .jpeg .png)
+
     message.gsub(/<(http.*)>/) do
       matched_content = $1
-      if matched_content.include?('.gif')
+      if image_formats.any?{ |img| matched_content.include?(img) }
         if message.include?('uploaded')
           "<span class='private'>Private image uploaded, members only. Sorry.</span>"
         else
-          "<span class='private hidden-gif'>Animated Gif [click to view] <img class='hidden' src='#{matched_content.split('|').first}' /></span>"
+          "<span class='private hidden-gif'>Image File [click to view] <img class='hidden' src='#{matched_content.split('|').first}' /></span>"
         end
       else
         Rinku.auto_link("#{matched_content.split('|').first}")
