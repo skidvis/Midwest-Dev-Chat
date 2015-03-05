@@ -32,35 +32,10 @@ class HomeController < ApplicationController
   private
 
   def get_members
-    if Member.count == 0
-      members = HTTParty.get("https://slack.com/api/users.list?token=#{Rails.application.secrets.slack_token}&pretty=1")
-      if members['ok'].presence
-        members['members'].each do |member|
-          new_member = Member.new do |m|
-            m.slack_id = member['id']
-            m.name = member['name']
-            m.color = member['color']
-            m.save
-          end
-        end
-      end
-    end
+    SlackHelper.update_members if Member.count == 0
   end
 
   def get_channels
-    Channel.all.each {|x| x.destroy}
-
-    if Channel.count == 0
-      channels = HTTParty.get("https://slack.com/api/channels.list?token=#{Rails.application.secrets.slack_token}&pretty=1")
-      if channels['ok'].presence
-        channels['channels'].each do |channel|
-          new_channel = Channel.new do |c|
-            c.slack_id = channel['id']
-            c.name = channel['name']
-            c.save
-          end
-        end
-      end
-    end
+    SlackHelper.update_channels if Channel.count == 0
   end
 end

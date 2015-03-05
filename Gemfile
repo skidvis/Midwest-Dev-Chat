@@ -13,6 +13,7 @@ gem 'httparty'
 gem 'haml-rails'
 gem 'rinku'
 gem 'ffaker'
+gem 'whenever', :require => false
 
 group :development, :test do
   gem 'jazz_hands'
