@@ -23,6 +23,15 @@ class HomeController < ApplicationController
     if params['email'].present? && params['email'].include?('@')
       SignupMailer.signup(params['email']).deliver_later
 
+      options = {
+          body: {
+              email: params['email'],
+              token: Rails.application.secrets.slack_token
+          }
+      }
+
+      response = HTTParty.post("https://#{Rails.application.secrets.slack_domain}.slack.com/api/users.admin.invite", options)
+
       cookies[:signed_up] = true
     end
 
