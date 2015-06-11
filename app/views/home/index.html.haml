@@ -1,9 +1,4 @@
 .messages
-  %h3
-    = Rails.application.secrets.title
-    is an invite-only,
-    = link_to 'Slack-powered', 'http://slack.com'
-    message group.
   %ul.transparent.rounded-lite
     %li.transparent.rounded-lite.description
       = simple_format "The newest 15 messages in the super-cool <strong>##{@current_channel}</strong> channel."

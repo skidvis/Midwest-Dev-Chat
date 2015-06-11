@@ -3,8 +3,9 @@ module SlackHelper
     members = HTTParty.get("https://slack.com/api/users.list?token=#{Rails.application.secrets.slack_token}&pretty=1")
 
     if members['ok'].presence
-      members['members'].find_or_create_by(slack_id: member['id']) do |member|
-        new_member = Member.new do |m|
+
+      members['members'].each do |member|
+        new_member = Member.find_or_create_by(slack_id: member['id']) do |m|
           m.slack_id = member['id']
           m.name = member['name']
           m.color = member['color']

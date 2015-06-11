@@ -17,11 +17,16 @@
 
 = csrf_meta_tags
 %body
-  .header.transparent
-    %h1
-      = link_to Rails.application.secrets.title, '/', style: 'color:#000;'
-      %span.float-right
+  .header
+    %h1{style: 'padding 0 10px;'}
+      = link_to image_tag('logo.png'), '/', style: 'color:#000;'
+      %span.float-right{style: 'text-align: right;'}
         = link_to 'github.com/skidvis/Midwest-Dev-Chat', 'https://github.com/skidvis/Midwest-Dev-Chat'
+        %h3
+          = Rails.application.secrets.title
+          is an invite-only,
+          = link_to 'Slack-powered', 'http://slack.com'
+          message group.
   .content
     = yield
 
