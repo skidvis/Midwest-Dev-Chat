@@ -21,7 +21,7 @@ class HomeController < ApplicationController
 
   def create
     if params['email'].present? && params['email'].include?('@')
-      SignupMailer.signup(params['email']).deliver_later
+      # SignupMailer.signup(params['email']).deliver_later
 
       options = {
           body: {
