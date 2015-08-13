@@ -21,7 +21,7 @@ class HomeController < ApplicationController
 
   def create
     if params['email'].present? && params['email'].include?('@')
-       SignupMailer.signup(params['email']).deliver_later
+       SignupMailer.signup(params['email'], params['name'], params['referral']).deliver_later
 
       options = {
           body: {
@@ -35,7 +35,11 @@ class HomeController < ApplicationController
       cookies[:signed_up] = true
     end
 
-    redirect_to home_index_path
+    redirect_to success_path
+  end
+
+  def success
+
   end
 
   private

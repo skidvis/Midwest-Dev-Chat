@@ -19,9 +19,23 @@
         = "We're currently #{Member.count} members strong. Join us!"
 
       = form_tag( {:action => 'create'}, { :method => :post } ) do
-        = text_field_tag(:email, nil, class: 'rounded inputs', placeholder: 'Email Address', required: true)
-        %button{class: 'rounded signup-button', type: 'submit'}
-          Request invite
+        %table{style: 'margin:auto;'}
+          %tr
+            %td Your Name:
+            %td
+              = text_field_tag(:name, nil, class: 'rounded inputs', placeholder: 'Your Name', required: true)
+          %tr
+            %td Email:
+            %td
+              = text_field_tag(:email, nil, class: 'rounded inputs', placeholder: 'Email Address', required: true)
+          %tr
+            %td Referred By:
+            %td
+              = text_field_tag(:referral, nil, class: 'rounded inputs', placeholder: 'Referred By', required: true)
+          %tr
+            %td{colspan: 2}
+              %button{class: 'rounded signup-button', type: 'submit'}
+                Request invite
 
 .channels.transparent.rounded-lite
   %h3

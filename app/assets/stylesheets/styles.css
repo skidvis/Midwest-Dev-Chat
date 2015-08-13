@@ -163,3 +163,28 @@ pre{
 .hidden{
     display: none;
 }
+
+.successbox{
+    display: inline-block;
+    margin: auto;
+    background-color: #fff;
+    border-radius: 5px;
+    border: solid #ccc 1px;
+    color: #555;
+    padding: 15px;
+    font-size: 20px;
+}
+
+.successbox ul{
+    padding: 0;
+    list-style-type: none;
+    display: inline-block;
+}
+
+.successbox li{
+    padding: 5px;
+    background-color: #eee;
+    margin: 5px;
+    border-radius: 5px;
+    font-size: 25px;
+}

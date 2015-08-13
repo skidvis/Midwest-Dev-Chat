@@ -1,7 +1,14 @@
 %h1
   You have a new member request:
 %p
+  Name:
+  = @name
+%p
+  Email:
   = @email
+%p
+  Referral:
+  = @referral
 
 %p
   = link_to 'Go Invite them!', 'https://midwestdevchat.slack.com/admin/invites/full'

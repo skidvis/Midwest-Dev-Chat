@@ -5,5 +5,6 @@ Rails.application.routes.draw do
 
   post '/create' => 'home#create', :as => :create
   get '/home/index/:slack_id', to: 'home#index'
+  get '/success' => 'home#success', :as => :success
 
 end
