@@ -5,12 +5,12 @@ Midwest Dev Chat is an awesome group of developers (software, web, etc) from the
 Joining the chat group requires an invite from an admin. There's quite a few of us, but if you don't know who to ask then it makes joining a bit harder.
 Another thing I've been asked a few times is, "Is there a feed of the chats we can see on the web?"
 
-Those two reasons are why I thought about putting this together. It provides a central website where someone can go to take a quick look at what's happening in the #general channel (there's quite a few channels for different technogies, music, meetups, etc) and also request an invite directly. 
+Those two reasons are why I thought about putting this together. It provides a central website where someone can go to take a quick look at what's happening in the #generalchat channel (there's quite a few channels for different technogies, music, meetups, etc) and also request an invite directly. 
 
 # How can you help?
 I made this in a day, I'm not very good at Ruby/Rails, I'm not the best designer on Earth. 
 I'm fairly certain there's better ways of handling some of the features I added, and that there are features I haven't even considered which would be awesome. 
-If you have the skills to improve or add features, please please please help us out!
+If you have the skills to improve or add features, please help us out!
 
 # Gotchas
 Two files are missing from this repo. The database.yml and secrets.yml from the config folder.
@@ -79,3 +79,4 @@ If you have any questions, feel free to reach out!
 
 Thanks!
 Vis
+
