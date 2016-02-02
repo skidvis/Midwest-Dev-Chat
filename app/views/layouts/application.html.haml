@@ -30,11 +30,21 @@
   .content
     = yield
 
+  %script{:src => "https://www.google.com/recaptcha/api.js"}
+
 :javascript
   $(document).ready(function () {
      $('#name').focus();
 
      $('.hidden-gif').bind('click', function(){
       $.featherlight($(this).children());
-     })
+     });
+
+    $('#submit_button').bind('click', function(){
+      if(grecaptcha.getResponse() != ""){
+        $('form').submit();
+      }else{
+        return false;
+      }
+     });
   });

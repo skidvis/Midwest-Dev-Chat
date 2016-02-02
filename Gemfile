@@ -16,7 +16,7 @@ gem 'ffaker'
 gem 'whenever', :require => false
 
 group :development, :test do
-  gem 'jazz_hands'
-  gem 'better_errors'
+  # gem 'jazz_hands'
+  # gem 'better_errors'
 end
 

@@ -34,8 +34,11 @@
               = text_field_tag(:referral, nil, class: 'rounded inputs', placeholder: 'Referred By', required: true)
           %tr
             %td{colspan: 2}
-              %button{class: 'rounded signup-button', type: 'submit'}
-                Request invite
+              .center.g-recaptcha{"data-sitekey" => "6LctEhcTAAAAAClQ_FDRUYhJX1QMTwGbvovW3WvN"}
+          %tr
+            %td{colspan: 2}
+              %button{class: 'rounded signup-button', id: 'submit_button'}
+                Request invite        
 
 .channels.transparent.rounded-lite
   %h3

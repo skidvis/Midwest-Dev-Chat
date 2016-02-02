@@ -188,3 +188,8 @@ pre{
     border-radius: 5px;
     font-size: 25px;
 }
+
+.center div div{
+    margin: auto;
+    padding: 10px;
+}
