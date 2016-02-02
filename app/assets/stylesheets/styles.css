@@ -5,7 +5,7 @@ body, p, h1, h2{
 }
 
 html {
-    background: url('/bg.png') no-repeat center center fixed;
+    background: url('https://source.unsplash.com/random') no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
