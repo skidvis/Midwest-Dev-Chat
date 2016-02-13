@@ -1,5 +1,7 @@
 [![Stories in Ready](https://badge.waffle.io/skidvis/Midwest-Dev-Chat.png?label=ready&title=Ready)](https://waffle.io/skidvis/Midwest-Dev-Chat)
 # What is this?
+
+[![Join the chat at https://gitter.im/skidvis/Midwest-Dev-Chat](https://badges.gitter.im/skidvis/Midwest-Dev-Chat.svg)](https://gitter.im/skidvis/Midwest-Dev-Chat?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 Midwest Dev Chat is an awesome group of developers (software, web, etc) from the midwest who hang out daily using the great Slack messaging app. 
 
 Joining the chat group requires an invite from an admin. There's quite a few of us, but if you don't know who to ask then it makes joining a bit harder.
