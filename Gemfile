@@ -17,6 +17,7 @@ gem 'whenever', :require => false
 
 group :development, :test do
   # gem 'jazz_hands'
-  # gem 'better_errors'
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 

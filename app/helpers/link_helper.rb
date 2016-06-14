@@ -1,6 +1,7 @@
 module LinkHelper
   def self.process_links message
     user = Member.find_by_slack_id(message['user']) || add_new_user(message['user'])
+    return unless user
     fake = Fake.find_by_real_name(user.name) || add_new_fake(user.name)
 
     message_date = DateTime.strptime(message['ts'],'%s').in_time_zone('Central Time (US & Canada)').strftime('%m/%d %H:%M:%S')
