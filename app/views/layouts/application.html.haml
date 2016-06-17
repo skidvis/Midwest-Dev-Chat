@@ -9,6 +9,7 @@
 %link{:href => "//cdn.rawgit.com/noelboss/featherlight/1.2.0/release/featherlight.min.css", :rel => "stylesheet", :title => "Featherlight Styles", :type => "text/css"}/
 %script{:charset => "utf-8", :src => "//cdn.rawgit.com/noelboss/featherlight/1.2.0/release/featherlight.min.js", :type => "text/javascript"}
 
+
 %meta{:content => "Midwest Dev Chat", :property => "og:title"}/
 %meta{:content => "website", :property => "og:type"}/
 %meta{:content => "http://www.midwestdevchat.com/", :property => "og:url"}/
@@ -25,21 +26,27 @@
   .content
     = yield
 
-  %script{:src => "https://www.google.com/recaptcha/api.js"}
 
 :javascript
+  var verifyCallback = function(response) {
+    $('#submit_button').show();
+  };
+
+  var onloadCallback = function(){
+    grecaptcha.render('recap', {
+      'sitekey' : '6LctEhcTAAAAAClQ_FDRUYhJX1QMTwGbvovW3WvN',
+      'callback' : verifyCallback,
+      'theme' : 'light'
+    });
+  }
+
   $(document).ready(function () {
      $('#name').focus();
 
      $('.hidden-gif').bind('click', function(){
       $.featherlight($(this).children());
      });
-
-    $('#submit_button').bind('click', function(){
-      if(grecaptcha.getResponse() != ""){
-        $('form').submit();
-      }else{
-        return false;
-      }
-     });
   });
+
+
+%script{:src => "https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit", :async => 'async', :defer => 'defer'}
