@@ -225,6 +225,7 @@ li.description{
 }
 
 .flexbox-container {
+    display: -ms-flexbox;
     display: -ms-flex;
     display: -webkit-flex;
     display: flex;
@@ -232,10 +233,12 @@ li.description{
 
 .bigitem {
     /* This will be twice as big as the small item. */
+    -ms-flex: 2 0 0;
     -webkit-flex: 2 0 0;
     flex: 2 0 0;
 }
 .smallitem {
+    -ms-flex: 1 0 0;
     -webkit-flex: 1 0 0;
     flex: 1 0 0;
 }
