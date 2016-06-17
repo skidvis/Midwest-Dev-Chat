@@ -1,5 +1,5 @@
-.main
-  .messages
+.main.flexbox-container
+  .messages.bigitem
     %ul
       %li.description
         = simple_format "The newest 15 messages in the super-cool <strong>##{@current_channel}</strong> channel."
@@ -9,7 +9,7 @@
       %li.description
         *Usernames have been changed to protect the innocent.
 
-  .signup_controls.transparent
+  .signup_controls.transparent.smallitem
     - if cookies[:signed_up]
       %h1
         Thanks for signing up! You'll get an email soon.

@@ -27,8 +27,6 @@ h1, h2{
 }
 
 .messages{
-    width: 67.5%;
-    float: left;
 }
 
 .messages ul{
@@ -163,7 +161,6 @@ li.description{
 }
 
 .signup_controls{
-    float: right;
     background-color: #fff;
     display: inline-block;
     padding: 10px;
@@ -225,4 +222,20 @@ li.description{
 .center div div{
     margin: auto;
     padding: 10px;
+}
+
+.flexbox-container {
+    display: -ms-flex;
+    display: -webkit-flex;
+    display: flex;
+}
+
+.bigitem {
+    /* This will be twice as big as the small item. */
+    -webkit-flex: 2 0 0;
+    flex: 2 0 0;
+}
+.smallitem {
+    -webkit-flex: 1 0 0;
+    flex: 1 0 0;
 }
