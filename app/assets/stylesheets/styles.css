@@ -236,6 +236,7 @@ li.description{
     -ms-flex: 2 0 0;
     -webkit-flex: 2 0 0;
     flex: 2 0 0;
+    max-width:70%;
 }
 .smallitem {
     -ms-flex: 1 0 0;
