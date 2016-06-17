@@ -16,16 +16,31 @@ h1, h2{
     padding: 5px;
 }
 
+.center{
+    margin: auto;
+    text-align: center;
+}
+
+.header {
+    background-color: #fff;
+    border-bottom: solid 1px #ccc;
+}
+
+.messages{
+    width: 67.5%;
+    float: left;
+}
+
 .messages ul{
-    padding: 5px;
-    background-color: #bbb;
+    padding: 0px;
+    margin:0;
+    border-right: solid 1px #aaa;
 }
 
 .messages li{
     list-style-type: none;
     padding: 4px;
-    background-color: #eee;
-    margin: 2px;
+    background-color: #fff;
 }
 
 .messages li a{
@@ -59,14 +74,20 @@ pre{
     -khtml-border-radius: 4px; /* for old Konqueror browsers */
 }
 
+.main{
+    overflow: auto;
+    /*background-color: #fff;*/
+}
+
 .transparent{
     opacity: 0.9;
     filter: alpha(opacity=90);
 }
 
-.description{
+li.description{
     text-align: center;
     color: #555;
+    background-color: #eee;
 }
 
 .header{
@@ -74,11 +95,6 @@ pre{
 
 .member{
     font-weight: bold;
-}
-
-.messages{
-    width: 75%;
-    margin: auto;
 }
 
 .emoji{
@@ -97,7 +113,7 @@ pre{
     text-align: center;
     padding: 15px;
     margin: 50px;
-    background-color: #eee;
+
 }
 
 .private{
@@ -144,6 +160,23 @@ pre{
     border-radius: 10px; /* future proofing */
     -khtml-border-radius: 10px; /* for old Konqueror browsers */
     padding: 5px 15px;
+}
+
+.signup_controls{
+    float: right;
+    background-color: #fff;
+    display: inline-block;
+    padding: 10px;
+    border-bottom: solid 1px #eee;
+}
+
+.signup_controls span{
+    text-align: center;
+    display: block;
+}
+
+.signup_controls input{
+    background-color: #eee;
 }
 
 .rounded-lite{

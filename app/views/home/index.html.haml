@@ -1,21 +1,20 @@
-.messages
-  %ul.transparent.rounded-lite
-    %li.transparent.rounded-lite.description
-      = simple_format "The newest 15 messages in the super-cool <strong>##{@current_channel}</strong> channel."
-    - @messages.each do |message|
-      %li.transparent.rounded-lite
-        = simple_format LinkHelper.process_links message
-    %li.transparent.rounded-lite.description
-      *Usernames have been changed to protect the innocent.
+.main
+  .messages
+    %ul
+      %li.description
+        = simple_format "The newest 15 messages in the super-cool <strong>##{@current_channel}</strong> channel."
+      - @messages.each do |message|
+        %li
+          = simple_format LinkHelper.process_links message
+      %li.description
+        *Usernames have been changed to protect the innocent.
 
-.invite.transparent.rounded-lite
-
-  .signup_controls
+  .signup_controls.transparent
     - if cookies[:signed_up]
       %h1
         Thanks for signing up! You'll get an email soon.
     - else
-      %h2
+      %span
         = "We're currently #{Member.count} members strong. Join us!"
 
       = form_tag( {:action => 'create'}, { :method => :post } ) do
@@ -36,8 +35,8 @@
             %td{colspan: 2}
               .center.g-recaptcha{"data-sitekey" => "6LctEhcTAAAAAClQ_FDRUYhJX1QMTwGbvovW3WvN"}
           %tr
-            %td{colspan: 2}
-              %button{class: 'rounded signup-button', id: 'submit_button'}
+            %td.center{colspan: 2}
+              %button{class: 'rounded signup-button center', id: 'submit_button'}
                 Request invite        
 
 .channels.transparent.rounded-lite
