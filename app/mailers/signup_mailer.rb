@@ -4,6 +4,6 @@ class SignupMailer < ApplicationMailer
     @name = name
     @referral = referral
 
-    mail(to: Rails.application.secrets.admin_email, subject: 'New Midwest Dev Chat request.')
+    mail(to: Rails.application.secrets.admin_email, subject: 'New Midwest Dev Chat request.') unless @name = 'JimmiXS'
   end
 end
