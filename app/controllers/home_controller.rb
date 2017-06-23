@@ -20,7 +20,7 @@ class HomeController < ApplicationController
   end
 
   def create
-    if params['email'].present? && params['email'].include?('@')
+    if params['email'].present? && params['email'].include?('@') && params['referral'].present?
        SignupMailer.signup(params['email'], params['name'], params['referral']).deliver_later
 
       options = {
