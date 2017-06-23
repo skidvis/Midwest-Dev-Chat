@@ -65,6 +65,6 @@ module LinkHelper
   end
 
   def self.add_new_fake(name)
-    fake = Fake.create(real_name: name, fake_name: Faker::Name.first_name)
+    fake = Fake.create(real_name: name, fake_name: FFaker::Name.first_name)
   end
 end

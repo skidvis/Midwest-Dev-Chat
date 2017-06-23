@@ -20,7 +20,7 @@
       = form_tag( {:action => 'create'}, { :method => :post } ) do
         %table{style: 'margin:auto;'}
           %tr
-            %td Your Name:
+            %td Name:
             %td
               = text_field_tag(:name, nil, class: 'rounded inputs', placeholder: 'Your Name', required: true)
           %tr
@@ -32,12 +32,13 @@
             %td
               = text_field_tag(:referral, nil, class: 'rounded inputs', placeholder: 'Referred By', required: true)
           %tr
-            %td{colspan: 2}
-              -#.center.g-recaptcha{"data-sitekey" => "6LctEhcTAAAAAClQ_FDRUYhJX1QMTwGbvovW3WvN"}
-              #recap.center
+            %td Interest:
+            %td
+              = select_tag "interest", options_for_select([ "Select One..", "Development" ], "Select One..")
           %tr
-            %td.center{colspan: 2}
-              %button.hidden{class: 'rounded signup-button center', id: 'submit_button'}
+            %td
+            %td
+              %button{class: 'rounded signup-button center', id: 'submit_button'}
                 Request invite        
 
 .channels.transparent.rounded-lite
