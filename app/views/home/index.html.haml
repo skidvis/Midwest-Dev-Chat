@@ -54,3 +54,17 @@
           = link_to "##{channel.name}", "/home/index/#{channel.name}", style: 'color: #000;'
   %h4
     Join the conversation!
+
+:javascript
+  $(document).ready(function () {
+     $('#submit_button').bind('click', function(event){
+       event.preventDefault();
+       dataLayer.push({
+         event: 'submit_form',
+         fullname: $('#name').text(),
+         email: $('#email').text(),
+         referredBy: $('#referral').text()
+       });
+       $('form').submit();
+     });
+  });  
