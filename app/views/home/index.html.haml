@@ -61,9 +61,9 @@
        event.preventDefault();
        dataLayer.push({
          event: 'submit_form',
-         fullname: $('#name').text(),
-         email: $('#email').text(),
-         referredBy: $('#referral').text()
+         fullname: $('#name').val(),
+         email: $('#email').val(),
+         referredBy: $('#referral').val()
        });
        $('form').submit();
      });
