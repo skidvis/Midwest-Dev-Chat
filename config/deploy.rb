@@ -50,7 +50,7 @@ task :deploy => :environment do
       in_path(fetch(:current_path)) do
         command %{mkdir -p tmp/}
         command %{touch tmp/restart.txt}
-        #command %{rake slack:update_channels}
+        command %{bundle exec rake slack:update_channels RAILS_ENV=production}
       end
     end
   end
