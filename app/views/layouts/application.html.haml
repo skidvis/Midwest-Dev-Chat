@@ -13,6 +13,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
 = javascript_include_tag 'application', 'data-turbolinks-track' => true
 %link{:href => 'http://midwestdevchat.com/favicon.ico', :rel => 'icon', :type => 'image/png'}/
+
+%script{:src => "https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"}
+%link{:href => "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css", :rel => "stylesheet"}/
+%script{:src => "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"}
+
 %link{:href => "//cdn.rawgit.com/noelboss/featherlight/1.2.0/release/featherlight.min.css", :rel => "stylesheet", :title => "Featherlight Styles", :type => "text/css"}/
 %script{:charset => "utf-8", :src => "//cdn.rawgit.com/noelboss/featherlight/1.2.0/release/featherlight.min.js", :type => "text/javascript"}
 
@@ -29,12 +34,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KXF2GJ2"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
-  .header.transparent
-    %h1{style: 'padding 0 10px;'}
-      = link_to "MidwestDevChat.com", '/', style: 'color:#000;'
-      %span.float-right{style: 'text-align: right;'}
-        = link_to 'github.com/skidvis/Midwest-Dev-Chat', 'https://github.com/skidvis/Midwest-Dev-Chat'
-  .content
+  .header
+    %h1
+      = link_to 'MidwestDevChat.com', '/', style: 'color:#000;'
+      .nav.pull-right
+        %ul
+          -# %li.btn.btn-default= link_to 'Careers', :careers
+          %li.btn.btn-default= link_to 'Contribute on Github', 'https://github.com/skidvis/Midwest-Dev-Chat'
+          %li.btn.btn-default.parrot
+            = link_to 'http://cultofthepartyparrot.com', title: 'Check out the Party Parrot!' do
+              %img{src: '/emojis/rightparrot.gif', alt: 'Party Parrot gif'}
+  .flash_area
+    %p.notice= notice
+    %p.alert= alert        
+  .content.container
     = yield
 
 

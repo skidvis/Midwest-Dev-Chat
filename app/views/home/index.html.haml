@@ -1,70 +1,71 @@
-.main.flexbox-container
-  .messages.bigitem
-    %ul
-      %li.description
-        = simple_format "The newest 15 messages in the super-cool <strong>##{@current_channel}</strong> channel."
-      - @messages.each do |message|
-        %li
-          = simple_format LinkHelper.process_links message
-      %li.description
-        *Usernames have been changed to protect the innocent.
+.row
+  .col-md-8
+    .messages.bigitem
+      %ul
+        %li.description
+          = simple_format "The newest 15 messages in the super-cool <strong>##{@current_channel}</strong> channel."
+        - @messages.each do |message|
+          %li
+            = simple_format LinkHelper.process_links message
+        %li.description
+          *Usernames have been changed to protect the innocent.
 
-  .signup_controls.transparent.smallitem
+  .col-md-4
     - if cookies[:signed_up]
-      %h1
-        Thanks for signing up! You'll get an email soon.
+      %h2
+        Thanks for signing up!
+      %h3
+        You'll get an email soon.
     - else
-      %span
+      %h5.center
         = "We're currently #{Member.count} members strong. Join us!"
 
-      = form_tag( {:action => 'create'}, { :method => :post } ) do
-        %table{style: 'margin:auto;'}
-          %tr
-            %td Name:
-            %td
-              = text_field_tag(:name, nil, class: 'rounded inputs', placeholder: 'Your Name', required: true)
-          %tr
-            %td Email:
-            %td
-              = text_field_tag(:email, nil, class: 'rounded inputs', placeholder: 'Email Address', required: true)
-          %tr
-            %td Referred By:
-            %td
-              = text_field_tag(:referral, nil, class: 'rounded inputs', placeholder: 'Referred By', required: true)
-          %tr
-            %td Interest:
-            %td
-              = select_tag "interest", options_for_select([ "Select One..", "Development" ], "Select One..")
-          %tr
-            %td
-            %td
-              %button{class: 'rounded signup-button center', id: 'submit_button'}
-                Request invite        
+      = form_tag( {:action => 'create'}, { method: :post, class: 'form-horizontal' } ) do
+        .form-group
+          %label.col-sm-3.control-label{for: 'name'} Name:
+          .col-sm-9
+            = text_field_tag(:name, nil, class: 'form-control', placeholder: 'Your Name', required: true)
+        .form-group
+          %label.col-sm-3.control-label{for: 'email'} Email:
+          .col-sm-9
+            = text_field_tag(:email, nil, class: 'form-control', placeholder: 'Email Address', required: true)
+        .form-group
+          %label.col-sm-3.control-label{for: 'referral'} Referred:
+          .col-sm-9
+            = text_field_tag(:referral, nil, class: 'form-control', placeholder: 'Referred By', required: true)
+        .form-group
+          %label.col-sm-3.control-label{for: 'interest'} Interest:
+          .col-sm-9
+            = select_tag "interest", options_for_select([ "Select One..", "Development" ], "Select One.."), class: 'form-control'
+        .form-group
+          .col-sm-9.col-sm-offset-3
+            #submit_button.btn.btn-default Request Invite     
+.row
+  .col-md-12
+    .channels.rounded-lite
+      %h3
+        Check out all the cool channels!
 
-.channels.transparent.rounded-lite
-  %h3
-    Check out all the cool channels!
+      %ul
+        - @channels.each do |channel|
+          %li
+            - if Rails.application.secrets.restricted_channels.any?{ |rc| channel.name.include? rc }
+              = "##{channel.name}"
+            - else
+              = link_to "##{channel.name}", "/home/index/#{channel.name}", style: 'color: #000;'
+      %h4
+        Join the conversation!
 
-  %ul
-    - @channels.each do |channel|
-      %li
-        - if Rails.application.secrets.restricted_channels.any?{ |rc| channel.name.include? rc }
-          = "##{channel.name}"
-        - else
-          = link_to "##{channel.name}", "/home/index/#{channel.name}", style: 'color: #000;'
-  %h4
-    Join the conversation!
-
-:javascript
-  $(document).ready(function () {
-     $('#submit_button').bind('click', function(event){
-       event.preventDefault();
-       dataLayer.push({
-         event: 'submit_form',
-         fullname: $('#name').val(),
-         email: $('#email').val(),
-         referredBy: $('#referral').val()
-       });
-       $('form').submit();
-     });
-  });  
+  :javascript
+    $(document).ready(function () {
+      $('#submit_button').bind('click', function(event){
+        event.preventDefault();
+        dataLayer.push({
+          event: 'submit_form',
+          fullname: $('#name').val(),
+          email: $('#email').val(),
+          referredBy: $('#referral').val()
+        });
+        $('form').submit();
+      });
+    });  
