@@ -45,12 +45,13 @@ task :deploy => :environment do
     invoke :'rails:db_migrate'
     invoke :'rails:assets_precompile'
     invoke :'deploy:cleanup'
+    command 'bundle exec rake slack:update_channels RAILS_ENV=production'
+    comment 'bundle exec rake slack:update_channels RAILS_ENV=production'
 
     on :launch do
       in_path(fetch(:current_path)) do
         command %{mkdir -p tmp/}
-        command %{touch tmp/restart.txt}
-        command %{bundle exec rake slack:update_channels RAILS_ENV=production}
+        command %{touch tmp/restart.txt}        
       end
     end
   end
