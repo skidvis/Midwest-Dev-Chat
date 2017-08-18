@@ -47,12 +47,12 @@
         Check out all the cool channels!
 
       %ul
-        - @channels.each do |channel|
+        - @channels.order('name ASC').each do |channel|
           %li
             - if Rails.application.secrets.restricted_channels.any?{ |rc| channel.name.include? rc }
               = "##{channel.name}"
             - else
-              = link_to "##{channel.name}", "/home/index/#{channel.name}", style: 'color: #000;'
+              = link_to "#{channel.name}", "/home/index/#{channel.name}", class: 'btn btn-default'
       %h4
         Join the conversation!
 

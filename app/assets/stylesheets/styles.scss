@@ -36,14 +36,6 @@ html {
     li:nth-child(even) {background: #eee;}
 }
 
-.channels li{
-    display: inline-block;
-    border: solid 1px #ddd;
-    padding: 3px;
-    margin: 2px;
-    background-color: #fff;
-}
-
 a{
     color: #00a;
     text-decoration: none;
@@ -147,11 +139,22 @@ li.parrot{
     padding: 15px;
     margin: 50px;
     background-color: #eee;
+
+    h3{
+        margin-top:0;
+    }
+
+    ul{
+        text-align: justify;
+
+        li{
+            display: inline-block;
+            padding: 0px;
+            margin: 1px;
+        }
+    }
 }
 
-.channels h3{
-    margin-top:0;
-}
 
 .signup-button{
     border: 0;
