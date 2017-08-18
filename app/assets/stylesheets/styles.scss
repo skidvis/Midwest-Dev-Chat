@@ -1,9 +1,84 @@
+// Base Elements
+//
 html {
     // background: url('https://source.unsplash.com/random') no-repeat center center fixed;
     // -webkit-background-size: cover;
     // -moz-background-size: cover;
     // -o-background-size: cover;
     // background-size: cover;
+}
+
+a{
+    color: #00a;
+    text-decoration: none;
+}
+
+pre{
+    border: solid 2px #bbb;
+    padding: 15px;
+    margin: 15px;
+    background-color: #ddd;
+
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px; /* future proofing */
+    -khtml-border-radius: 4px; /* for old Konqueror browsers */
+}
+
+// Classes
+//
+.careers{
+    ul.devs, ul.dev, ul.jobs, ul.job {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    ul.dev{
+        li.fullname{
+            padding-left: 0;
+
+            &::before{
+                content: "\25BC \0020 {";
+            }
+        }
+
+        li{
+            padding-left: 27px;
+        }
+
+        li.links::after{
+            content: '}';
+        }
+    }
+    
+    span.value {
+        color: #777;
+    } 
+
+    span.value:after {
+        content: ",";
+        color: #000;
+    }
+
+    span.value.last{
+        content: 'ninja';
+    }
+
+    .links span.value{
+        color: #000;
+    }
+
+    .links a:last-child::after {
+        content: '';
+    }
+
+    .links a::after {
+        content: ',';
+    }
+
+    .see_all{
+        font-size: 15px;
+    }
 }
 
 .center{
@@ -13,6 +88,24 @@ html {
 .header {
     border-bottom: solid 1px #ccc;
     overflow: auto;
+    background-color: #337ab7;
+    
+    h1{
+        margin:0;
+        padding: 5px;
+    }    
+
+    li.login-status {
+        margin: 0 10px 0 25px;
+    }    
+
+    li.parrot{
+        padding: 0 5px;
+    
+        img{
+            height: 32px;
+        }
+    }
 }
 
 .messages{
@@ -36,23 +129,6 @@ html {
     li:nth-child(even) {background: #eee;}
 }
 
-a{
-    color: #00a;
-    text-decoration: none;
-}
-
-pre{
-    border: solid 2px #bbb;
-    padding: 15px;
-    margin: 15px;
-    background-color: #ddd;
-
-    -moz-border-radius: 4px;
-    -webkit-border-radius: 4px;
-    border-radius: 4px; /* future proofing */
-    -khtml-border-radius: 4px; /* for old Konqueror browsers */
-}
-
 .main{
     overflow: auto;
     /*background-color: #fff;*/
@@ -69,28 +145,11 @@ li.description{
     background-color: #ddd;
 }
 
-li.parrot{
-    padding: 0 5px;
-
-    img{
-        height: 32px;
-    }
-}
-
 .flash_area{
     p{
         padding: 5px;
         margin: 0;
         text-align: center;
-    }
-}
-
-.header{
-    background-color: #337ab7;
-
-    h1{
-        margin:0;
-        padding: 5px;
     }
 }
 

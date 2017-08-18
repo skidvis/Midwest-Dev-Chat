@@ -1,1 +1,53 @@
-You are here.
+.careers.row
+  .col-md-4.col-md-offset-2
+    %h3 
+      Newest Opportunities
+      %span.see_all
+        =link_to '(see all)', '/'      
+    %ul.jobs 
+      - @devs.each do |dev|
+        %li 
+          %ul.dev
+            %li.fullname
+              %span.title name:
+              %span.value= dev.slackhandle.present? ? "'#{dev.fullname} (@#{dev.slackhandle})'" : "'#{dev.fullname}'"
+            %li.preferred_languages
+              %span.title preferred_languages:
+              %span.value= "'#{dev.preferred_languages}'"                 
+            %li.links
+              %span.title links:
+              %span
+                [
+                = link_to "'resume'", dev.resume if dev.resume.present?
+                = link_to "'linkedin'", dev.linkedin if dev.linkedin.present?
+                = link_to "'github'", dev.github if dev.github.present?
+                ]
+      %li
+        %hr
+        = link_to 'Post An Opportunity', '/', class: 'btn btn-default'
+  .col-md-4.col-md-offset-1
+    %h3 
+      5 Newest Available Devs
+      %span.see_all
+        =link_to '(see all)', :careers_all_devs
+    %ul.devs 
+      - @devs.each do |dev|
+        %li 
+          %ul.dev
+            %li.fullname
+              %span.title name:
+              %span.value= dev.slackhandle.present? ? "'#{dev.fullname} (@#{dev.slackhandle})'" : "'#{dev.fullname}'"
+            %li.preferred_languages
+              %span.title preferred_languages:
+              %span.value= "'#{dev.preferred_languages}'"                 
+            %li.links
+              %span.title links:
+              %span
+                [
+                = link_to "'resume'", dev.resume if dev.resume.present?
+                = link_to "'linkedin'", dev.linkedin if dev.linkedin.present?
+                = link_to "'github'", dev.github if dev.github.present?
+                ]
+      %li
+        %hr
+        = link_to 'Update your availability', :edit_user_registration, class: 'btn btn-default'

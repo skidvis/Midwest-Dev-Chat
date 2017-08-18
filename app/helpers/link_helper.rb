@@ -41,7 +41,9 @@ module LinkHelper
           "<span class='private hidden-gif'>Image File [click to view] <img class='hidden' src='#{matched_content.split('|').first}' /></span>"
         end
       else
-        Rinku.auto_link("#{matched_content.split('|').first}")
+        #Rinku.auto_link("#{matched_content.split('|').first}")
+        url = matched_content.split('|').first
+        "<a href='#{url}'>#{url.truncate(50)}</a>"
       end
     end
   end

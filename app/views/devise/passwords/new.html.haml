@@ -1,0 +1,14 @@
+.row 
+  .col-md-6.col-md-offset-3
+    %h2 Forgot your password?
+    = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }, html: {class: 'form-horizontal'}) do |f|
+      .form-group
+        %label.col-sm-3.control-label{for: 'email'} Email:
+        .col-sm-9
+          = f.email_field :email, autofocus: true, class: 'form-control'
+      .form-group
+        .col-sm-offset-6.checkbox
+          = f.submit "Send Password Reset", class: 'btn btn-default'
+      .form-group
+        .col-sm-offset-4.checkbox          
+          = render "devise/shared/links"

@@ -1,0 +1,89 @@
+-# :slackhandle, :career_status, :location, :max_distance, :will_relocate, :will_remote, :preferred_languages, :resume, :linkedin, :github
+
+.row
+  .col-md-8.col-md-offset-2
+    %h2
+      Edit #{resource_name.to_s.humanize}
+    = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: 'form-horizontal'}) do |f|
+      = devise_error_messages!
+      .form-group
+        %label.col-sm-5.control-label{for: 'fullname'} Full Name:
+        .col-sm-7
+          = f.text_field :fullname, autofocus: true, class: 'form-control', required: 'required'
+      .form-group
+        %label.col-sm-5.control-label{for: 'slackhandle'} Slack handle
+        .col-sm-7
+          = f.text_field :slackhandle, autofocus: true, class: 'form-control'             
+      .form-group
+        %label.col-sm-5.control-label{for: 'email'} Email:
+        .col-sm-7
+          = f.email_field :email, autofocus: true, class: 'form-control'
+      - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+        %div
+          Currently waiting confirmation for: #{resource.unconfirmed_email}
+      .form-group
+        %label.col-sm-5.control-label{for: 'password'} 
+          Password:
+          - if @minimum_password_length
+            %em 
+              (
+              = @minimum_password_length 
+              characters minimum)
+        .col-sm-7
+          = f.password_field :password, autocomplete: "off", class: 'form-control'
+      .form-group
+        %label.col-sm-5.control-label{for: 'password_confirmation'} Confirm Password:
+        .col-sm-7
+          = f.password_field :password_confirmation, autocomplete: "off", class: 'form-control'  
+      %hr
+      %h2 Career Data
+      .form-group
+        %label.col-sm-5.control-label{for: 'career_status'} Career Availability:
+        .col-sm-7
+          = f.select(:career_status, options_for_select(["Unavailable", "Seeking Contract", "Employed", "Seeking Employment" ], selected: f.object.career_status),{}, {class: 'form-control'})
+      .form-group
+        %label.col-sm-5.control-label{for: 'location'} Location
+        .col-sm-7
+          = f.text_field :location, autofocus: true, class: 'form-control'             
+      .form-group
+        %label.col-sm-5.control-label{for: 'max_distance'} Max Travel Distance:
+        .col-sm-7
+          = f.select(:max_distance, options_for_select(["<15 miles", "15-30 miles", "30-60 miles", "60-90 miles", "90+ miles"], selected: f.object.max_distance),{}, {class: 'form-control'})          
+      .form-group
+        %label.col-sm-5.control-label{for: 'will_relocate'} Willing to relocate:
+        .col-sm-7
+          = f.select(:will_relocate, options_for_select(['true', 'false'], selected: f.object.will_relocate),{}, {class: 'form-control'})          
+      .form-group
+        %label.col-sm-5.control-label{for: 'will_remote'} Remote OK:
+        .col-sm-7
+          = f.select(:will_remote, options_for_select(['true', 'false'], selected: f.object.will_remote),{}, {class: 'form-control'})   
+      .form-group
+        %label.col-sm-5.control-label{for: 'preferred_languages'} Preferred Languages
+        .col-sm-7
+          = f.text_field :preferred_languages, autofocus: true, class: 'form-control'  
+      .form-group
+        %label.col-sm-5.control-label{for: 'resume'} Resume URL
+        .col-sm-7
+          = f.text_field :resume, autofocus: true, class: 'form-control'  
+      .form-group
+        %label.col-sm-5.control-label{for: 'linkedin'} LinkedIn URL
+        .col-sm-7
+          = f.text_field :linkedin, autofocus: true, class: 'form-control'  
+      .form-group
+        %label.col-sm-5.control-label{for: 'github'} Github URL
+        .col-sm-7
+          = f.text_field :github, autofocus: true, class: 'form-control'                                          
+      %hr
+      .form-group
+        %label.col-sm-5.control-label{for: 'current_password'} 
+          Current Password:
+          %span{style: 'color: red;'} *
+        .col-sm-7
+          = f.password_field :current_password, autocomplete: "off", class: 'form-control'        
+      .form-group
+        .col-sm-offset-6
+          = f.submit "Update", class: 'btn btn-primary'    
+    %hr
+    .foot{style: 'padding:15px; overflow: auto;'}
+      #{button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-warning pull-right'}
+      = link_to "Back", :back, class: 'btn btn-info pull-left'

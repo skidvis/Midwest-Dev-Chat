@@ -12,11 +12,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   = Rails.application.secrets.title
 = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
 = javascript_include_tag 'application', 'data-turbolinks-track' => true
-%link{:href => 'http://midwestdevchat.com/favicon.ico', :rel => 'icon', :type => 'image/png'}/
+%link{:href => '//midwestdevchat.com/favicon.ico', :rel => 'icon', :type => 'image/png'}/
 
-%script{:src => "https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"}
-%link{:href => "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css", :rel => "stylesheet"}/
-%script{:src => "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"}
+%script{:src => "//ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"}
+%link{:href => "//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css", :rel => "stylesheet"}/
+%script{:src => "//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"}
+
+%link{:href => "//cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css", :rel => "stylesheet"}/
+%script{:src => "https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"}
 
 %link{:href => "//cdn.rawgit.com/noelboss/featherlight/1.2.0/release/featherlight.min.css", :rel => "stylesheet", :title => "Featherlight Styles", :type => "text/css"}/
 %script{:charset => "utf-8", :src => "//cdn.rawgit.com/noelboss/featherlight/1.2.0/release/featherlight.min.js", :type => "text/javascript"}
@@ -39,11 +42,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       = link_to 'MidwestDevChat.com', '/', class: 'page-title'
       .nav.pull-right
         %ul
-          -# %li.btn.btn-default= link_to 'Careers', :careers
+          %li.btn.btn-default= link_to 'Careers', :careers
           %li.btn.btn-default= link_to 'Contribute on Github', 'https://github.com/skidvis/Midwest-Dev-Chat'
           %li.btn.btn-default.parrot
             = link_to 'http://cultofthepartyparrot.com', title: 'Check out the Party Parrot!' do
               %img{src: '/emojis/rightparrot.gif', alt: 'Party Parrot gif'}
+          %li.btn.btn-default.login-status
+            - if user_signed_in?
+              = link_to current_user.fullname, :edit_user_registration
+            - else 
+              = link_to 'Login | Sign-up', :new_user_session
   .flash_area
     %p.notice= notice
     %p.alert= alert        

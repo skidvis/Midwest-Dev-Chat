@@ -1,0 +1,51 @@
+.row
+  .col-md-12
+    %table.stripe
+      %thead
+        %th
+          Name (slack_handle)
+        %th
+          Career Availability
+        %th  
+          Location
+        %th  
+          Max Travel Distance
+        %th
+          Willing to relocate
+        %th
+          Remote OK!  
+        %th
+          Preferred Language(s)  
+        %th 
+          Resumé 
+        %th
+          LinkedIn
+        %th
+          Github  
+      %tbody
+        - @devs.each do |dev|
+          %tr
+            %td
+              = "#{dev.fullname} (#{dev.slackhandle})"
+            %td
+              = "#{dev.career_status}"
+            %td
+              = "#{dev.location}"
+            %td
+              = "#{dev.max_distance}"
+            %td
+              = "#{dev.will_relocate}"                                          
+            %td
+              = "#{dev.will_remote}"
+            %td
+              = "#{dev.preferred_languages}"
+            %td
+              = link_to 'Resumé', dev.resume if dev.resume.present?
+            %td
+              = link_to 'LinkedIn', dev.linkedin if dev.linkedin.present?   
+            %td
+              = link_to 'Github', dev.github if dev.github.present?
+:javascript
+  $(document).ready(function() {
+      $('table').DataTable();
+  } );

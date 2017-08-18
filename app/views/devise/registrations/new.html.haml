@@ -1,0 +1,39 @@
+.row 
+  .col-md-6.col-md-offset-3
+    %h2 Sign up
+    =form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: 'form-horizontal'}) do |f|
+      = devise_error_messages!
+      .form-group
+        %label.col-sm-5.control-label{for: 'fullname'} Full Name:
+        .col-sm-7
+          = f.text_field :fullname, autofocus: true, class: 'form-control', required: 'required'
+      .form-group
+        %label.col-sm-5.control-label{for: 'email'} Email:
+        .col-sm-7
+          = f.email_field :email, autofocus: true, class: 'form-control'
+      .form-group
+        %label.col-sm-5.control-label{for: 'password'} 
+          Password:
+          - if @minimum_password_length
+            %em 
+              (
+              = @minimum_password_length 
+              characters minimum)
+        .col-sm-7
+          = f.password_field :password, autocomplete: "off", class: 'form-control'
+      .form-group
+        %label.col-sm-5.control-label{for: 'password_confirmation'} Confirm Password:
+        .col-sm-7
+          = f.password_field :password_confirmation, autocomplete: "off", class: 'form-control'          
+      - if devise_mapping.rememberable?
+        .form-group
+          .col-sm-offset-4.checkbox
+            %label
+              = f.check_box :remember_me
+              = f.label :remember_me
+      .form-group
+        .col-sm-offset-6.checkbox
+          = f.submit "Sign Up", class: 'btn btn-default'
+      .form-group
+        .col-sm-offset-4.checkbox          
+          = render "devise/shared/links"
