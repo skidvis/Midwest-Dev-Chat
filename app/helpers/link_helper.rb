@@ -5,8 +5,8 @@ module LinkHelper
     fake = Fake.find_by_real_name(user.name) || add_new_fake(user.name)
 
     message_date = DateTime.strptime(message['ts'],'%s').in_time_zone('Central Time (US & Canada)').strftime('%m/%d %H:%M:%S')
-
-    message = find_members_in_text(message['text'])
+    message = message['text']
+    message = find_members_in_text(message)
     message = find_urls_in_text(message)
     message = find_code_in_text(message)
     message = find_emojis_in_text(message)

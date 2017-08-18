@@ -6,7 +6,7 @@
           = simple_format "The newest 15 messages in the super-cool <strong>##{@current_channel}</strong> channel."
         - @messages.each do |message|
           %li
-            = simple_format LinkHelper.process_links message
+            = LinkHelper.process_links(message).html_safe
         %li.description
           *Usernames have been changed to protect the innocent.
 
