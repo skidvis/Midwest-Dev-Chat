@@ -18,7 +18,7 @@ module LinkHelper
   end
 
   def self.find_members_in_text(message)    
-    message.gsub(/<@(.*)>\s/) do
+    message.gsub(/<@(\w*)>/) do
       found_user_id = Regexp.last_match[1].split('|').first      
       if found_user_id.present?
         found_user = Member.find_by_slack_id(found_user_id) || add_new_user(found_user_id)
