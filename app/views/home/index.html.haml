@@ -5,8 +5,10 @@
         %li.description
           = simple_format "The newest 15 messages in the super-cool <strong>##{@current_channel}</strong> channel."
         - @messages.each do |message|
-          %li
-            = LinkHelper.process_links(message).html_safe
+          - new_message = LinkHelper.process_links(message)
+          - if new_message.present?
+            %li
+              = new_message.html_safe
         %li.description
           *Usernames have been changed to protect the innocent.
 

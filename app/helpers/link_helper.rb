@@ -6,6 +6,9 @@ module LinkHelper
 
     message_date = DateTime.strptime(message['ts'],'%s').in_time_zone('Central Time (US & Canada)').strftime('%m/%d %H:%M:%S')
     message = message['text']
+
+    return if message.match /has joined the channel|has left the channel/
+
     message = find_members_in_text(message)
     message = find_urls_in_text(message)
     message = find_code_in_text(message)
@@ -14,9 +17,8 @@ module LinkHelper
     "<span class='date'>#{message_date}</span> <span class='member' style='color: ##{user.color}'>#{fake.fake_name}:</span> <span>#{message}</span>"
   end
 
-  def self.find_members_in_text(message)
-    return ' joined or left the channel. ¯\_(ツ)_/¯' if message.match /has joined the channel|has left the channel/
-    message.gsub(/<@(.*)>/) do
+  def self.find_members_in_text(message)    
+    message.gsub(/<@(.*)>\s/) do
       found_user_id = Regexp.last_match[1].split('|').first      
       if found_user_id.present?
         found_user = Member.find_by_slack_id(found_user_id) || add_new_user(found_user_id)
