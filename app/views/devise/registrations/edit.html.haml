@@ -9,11 +9,7 @@
       .form-group
         %label.col-sm-5.control-label{for: 'fullname'} Full Name:
         .col-sm-7
-          = f.text_field :fullname, autofocus: true, class: 'form-control', required: 'required'
-      .form-group
-        %label.col-sm-5.control-label{for: 'slackhandle'} Slack handle
-        .col-sm-7
-          = f.text_field :slackhandle, autofocus: true, class: 'form-control'             
+          = f.text_field :fullname, autofocus: true, class: 'form-control', required: 'required'          
       .form-group
         %label.col-sm-5.control-label{for: 'email'} Email:
         .col-sm-7
@@ -36,7 +32,11 @@
         .col-sm-7
           = f.password_field :password_confirmation, autocomplete: "off", class: 'form-control'  
       %hr
-      %h2 Career Data
+      %h2 Careers Data
+      .form-group
+        %label.col-sm-5.control-label{for: 'slackhandle'} Slack handle
+        .col-sm-7
+          = f.text_field :slackhandle, autofocus: true, class: 'form-control'         
       .form-group
         %label.col-sm-5.control-label{for: 'career_status'} Career Availability:
         .col-sm-7
