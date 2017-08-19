@@ -1,0 +1,33 @@
+.row  
+  .col-md-12
+    .page_top{style: 'overflow: auto;'}
+      = link_to 'Add New Job', :new_job, class: 'btn btn-success pull-right'
+    %hr
+    %table.stripe
+      %thead
+        %th
+          Title
+        %th
+          Company  
+        %th
+          Url
+        %th
+          Post Date
+        %th
+      %tbody
+        - @jobs.each do |job|
+          %tr
+            %td 
+              = link_to job.title, job 
+            %td 
+              = job.company
+            %td
+              = link_to job.url, job.url
+            %td
+              = job.post_date
+            %td 
+              #{button_to "Delete", job_path(job.id), data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-warning pull-right'} 
+:javascript
+  $(document).ready(function() {
+      $('table').DataTable();
+  } );

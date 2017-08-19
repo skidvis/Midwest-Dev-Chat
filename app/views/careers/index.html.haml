@@ -1,30 +1,30 @@
 .careers.row
   .col-md-4.col-md-offset-2
     %h3 
-      Newest Opportunities
+      5 Newest Opportunities
       %span.see_all
-        =link_to '(see all)', '/'      
+        =link_to '(see all)', :careers_all_jobs    
     %ul.jobs 
-      - @devs.each do |dev|
+      - @jobs.each do |job|
         %li 
           %ul.dev
             %li.fullname
-              %span.title name:
-              %span.value= dev.slackhandle.present? ? "'#{dev.fullname} (@#{dev.slackhandle})'" : "'#{dev.fullname}'"
+              %span.title position:
+              %span.value= link_to job.title, job
             %li.preferred_languages
-              %span.title preferred_languages:
-              %span.value= "'#{dev.preferred_languages}'"                 
+              %span.title company:
+              %span.value= "'#{job.company}'"                 
             %li.links
-              %span.title links:
+              %span.title details:
               %span
                 [
-                = link_to "'resume'", dev.resume if dev.resume.present?
-                = link_to "'linkedin'", dev.linkedin if dev.linkedin.present?
-                = link_to "'github'", dev.github if dev.github.present?
+                = link_to "'url'", job.url
+                %span.remote
+                  = "'#{job.remote_options}'"
                 ]
       %li
         %hr
-        = link_to 'Post An Opportunity', '/', class: 'btn btn-default'
+        = link_to 'Post An Opportunity', :jobs, class: 'btn btn-default'
   .col-md-4.col-md-offset-1
     %h3 
       5 Newest Available Devs

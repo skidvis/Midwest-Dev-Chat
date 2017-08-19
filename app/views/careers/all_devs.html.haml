@@ -47,5 +47,5 @@
               = link_to 'Github', dev.github if dev.github.present?
 :javascript
   $(document).ready(function() {
-      $('table').DataTable();
+      $('table').DataTable({"pageLength": 50});
   } );
