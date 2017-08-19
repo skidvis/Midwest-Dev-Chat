@@ -1,7 +1,8 @@
 .row  
   .col-md-12
-    .page_top{style: 'overflow: auto;'}
+    .page_top{style: 'overflow: auto;'}      
       = link_to 'Add New Job', :new_job, class: 'btn btn-success pull-right'
+      = link_to 'Manage Jobs', :jobs, class: 'btn btn-info pull-right', style: 'margin-right: 5px;' if @myjobs && @myjobs > 0
     %hr
     %table.stripe
       %thead
