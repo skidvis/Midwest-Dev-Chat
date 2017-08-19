@@ -9,12 +9,14 @@
         %li 
           %ul.dev
             %li.fullname
+              %span.arrow
+                &#x25BC; {            
               %span.title position:
               %span.value= link_to job.title, job
-            %li.preferred_languages
+            %li.child.preferred_languages
               %span.title company:
               %span.value= "'#{job.company}'"                 
-            %li.links
+            %li.child.links
               %span.title details:
               %span
                 [
@@ -35,12 +37,14 @@
         %li 
           %ul.dev
             %li.fullname
+              %span.arrow
+                &#x25BC; {
               %span.title name:
               %span.value= dev.slackhandle.present? ? "'#{dev.fullname} (@#{dev.slackhandle})'" : "'#{dev.fullname}'"
-            %li.preferred_languages
+            %li.child.preferred_languages
               %span.title preferred_languages:
               %span.value= "'#{dev.preferred_languages}'"                 
-            %li.links
+            %li.child.links
               %span.title links:
               %span
                 [
@@ -51,3 +55,19 @@
       %li
         %hr
         = link_to 'Update your availability', :edit_user_registration, class: 'btn btn-default'
+:javascript
+  $(document).ready(function() {
+      $('li.fullname').bind('click', function(){
+        var $hidden_kids = $(this).parent().children('.hidden');
+        var $span_arrow = $(this).children('span.arrow');;
+        if($hidden_kids.length > 0){
+          $($span_arrow).html('&#x25BC; {');          
+          $($hidden_kids).removeClass('hidden');
+          $(this).removeClass('ellipse')
+        }else{
+          $($span_arrow).html('&#x25BA; {');
+          $(this).parent().children('.child').addClass('hidden'); 
+          $(this).addClass('ellipse')
+        }
+      });
+  } );          

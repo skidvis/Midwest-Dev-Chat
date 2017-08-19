@@ -36,10 +36,6 @@ pre{
     ul.dev{
         li.fullname{
             padding-left: 0;
-
-            &::before{
-                content: "\25BA \0020 {";
-            }
         }
 
         li{
@@ -51,6 +47,10 @@ pre{
         }
     }
     
+    span.arrow{
+        content: "\25BC \0020 {";
+    }
+
     span.value, span.remote {
         color: #777;
     } 
@@ -79,6 +79,10 @@ pre{
     .see_all{
         font-size: 15px;
     }
+}
+
+.ellipse::after{
+    content: '... }';
 }
 
 .center{
