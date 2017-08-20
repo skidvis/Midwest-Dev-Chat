@@ -104,11 +104,11 @@ pre{
         padding: 5px;
     }    
 
-    li.login-status {
+    .login-status {
         margin: 0 10px 0 25px;
     }    
 
-    li.parrot{
+    .parrot{
         padding: 0 5px;
     
         img{
@@ -291,7 +291,6 @@ li.description{
 
             a{
                 text-decoration: none;
-                display: block;
             }
         }
     }

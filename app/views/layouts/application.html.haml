@@ -44,16 +44,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       = link_to 'MidwestDevChat.com', '/', class: 'page-title'
       .nav.pull-right
         %ul
-          %li.btn.btn-default= link_to 'Careers', :careers
-          %li.btn.btn-default= link_to 'Contribute on Github', 'https://github.com/skidvis/Midwest-Dev-Chat'
-          %li.btn.btn-default.parrot
-            = link_to 'http://cultofthepartyparrot.com', title: 'Check out the Party Parrot!' do
+          %li= link_to 'Careers', :careers, class: ' btn btn-default'
+          %li= link_to 'Contribute on Github', 'https://github.com/skidvis/Midwest-Dev-Chat', class: ' btn btn-default'
+          %li
+            = link_to 'http://cultofthepartyparrot.com', title: 'Check out the Party Parrot!', class: ' btn btn-default parrot' do
               %img{src: '/emojis/rightparrot.gif', alt: 'Party Parrot gif'}
-          %li.btn.btn-default.login-status
-            - if user_signed_in?
-              = link_to current_user.fullname, :edit_user_registration
+          %li.login-status   
+            - if user_signed_in?                     
+              = link_to current_user.fullname, :edit_user_registration, class: ' btn btn-info'
+              = link_to 'Logoff', destroy_user_session_path, method: :delete, class: ' btn btn-default'          
             - else 
-              = link_to 'Login | Sign-up', :new_user_session
+              = link_to 'Login', :new_user_session, class: ' btn btn-info'
+              = link_to 'Sign Up', :new_user_registration, class: ' btn btn-default'
   .flash_area
     %p.notice= notice
     %p.alert= alert        
