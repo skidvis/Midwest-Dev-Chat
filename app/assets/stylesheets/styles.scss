@@ -27,6 +27,11 @@ pre{
 
 // Classes
 //
+.required::after{
+    color: red;
+    content: ' *'
+}
+
 .careers{
     ul.devs, ul.dev, ul.jobs, ul.job {
         list-style-type: none;
