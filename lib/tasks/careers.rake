@@ -17,7 +17,7 @@ namespace :careers do
         }.to_json
       }
 
-      response = HTTParty.post("https://hooks.slack.com/services/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", options)      
+      response = HTTParty.post(Rails.application.secrets.slack_webhook_url, options)      
     end
   end
 end
