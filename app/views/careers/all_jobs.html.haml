@@ -31,5 +31,20 @@
               = job.post_date
 :javascript
   $(document).ready(function() {
-      $('table').DataTable({"pageLength": 50});
-  } );
+      var typingTimer;
+      var doneTypingInterval = 3000;
+
+      var table = $('table').DataTable({"pageLength": 50});
+
+      table.on('search.dt', function () {
+        clearTimeout(typingTimer);
+        typingTimer = setTimeout(doneTyping, doneTypingInterval);                
+      });
+
+      var doneTyping = function(){
+        dataLayer.push({
+          event: 'jobs_search', 
+          search_term_dev: table.search();
+        })
+      }      
+  });
