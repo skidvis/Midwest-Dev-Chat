@@ -26,7 +26,10 @@
                 ]
       %li
         %hr
-        = link_to 'Post An Opportunity', :jobs, class: 'btn btn-default'
+        - if current_user        
+          = link_to 'Post An Opportunity', :jobs, class: 'btn btn-default'
+        -else 
+          = link_to 'Post An Opportunity', :user_slack_omniauth_authorize, class: 'btn btn-default'
   .col-md-4.col-md-offset-1
     %h3 
       Newest Available Devs
@@ -54,7 +57,11 @@
                 ]
       %li
         %hr
-        = link_to 'Update your availability', :edit_user_registration, class: 'btn btn-default'
+        - if current_user
+          = link_to 'Update your availability', :edit_user_registration, class: 'btn btn-default'
+        - else
+          = link_to 'Update your availability', :user_slack_omniauth_authorize, class: 'btn btn-default'
+          
 :javascript
   $(document).ready(function() {
       $('li.fullname').bind('click', function(){

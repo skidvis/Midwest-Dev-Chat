@@ -13,9 +13,11 @@ class User < ActiveRecord::Base
   devise :omniauthable, :omniauth_providers => [:slack]
 
   def self.from_omniauth(auth)
+      response = HTTParty.get("https://slack.com/api/users.info?token=#{Rails.application.secrets.slack_token}&user=#{auth.info.user_id}&pretty=1")
+
       where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
         user.fullname = auth.info.name
-        user.slackhandle = auth.info.user_id
+        user.slackhandle = response['user']['name']
         user.email = auth.info.email
         user.password = Devise.friendly_token[0,20]
     end      
