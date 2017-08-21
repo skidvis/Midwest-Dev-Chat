@@ -17,4 +17,8 @@ class RegistrationsController < Devise::RegistrationsController
     def after_update_path_for(resource)
       careers_path()
     end
+
+    def after_sign_in_path_for(resource)
+      careers_path()
+    end 
 end
