@@ -4,9 +4,8 @@ Rails.application.routes.draw do
     omniauth_callbacks: 'users/omniauth_callbacks' } do
     get '/users/sign_out' => 'devise/sessions#destroy' 
   end
-  
-  get 'home/index'
 
+  get 'home/index'
   root 'home#index'
 
   post '/create' => 'home#create', :as => :create
