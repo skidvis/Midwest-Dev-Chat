@@ -14,6 +14,7 @@ gem 'rinku'
 gem 'ffaker'
 gem 'whenever', :require => false
 gem 'devise'
+gem 'friendly_id', '~> 5.1.0'
 
 group :development, :test do
   gem 'jazz_fingers'

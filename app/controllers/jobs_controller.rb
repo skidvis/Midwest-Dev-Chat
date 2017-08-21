@@ -25,11 +25,11 @@ class JobsController < ApplicationController
   end
 
   def show
-    @job = Job.find_by(id: params[:id])
+    @job = Job.friendly.find(params[:id])
   end
 
   def destroy
-    @job = Job.find_by(id: params[:id])
+    @job = Job.friendly.find(params[:id])
     
     if current_user.id == @job.user.id then 
       @job.destroy

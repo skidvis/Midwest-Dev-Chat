@@ -62,6 +62,8 @@ GEM
     erubis (2.7.0)
     execjs (2.7.0)
     ffaker (2.5.0)
+    friendly_id (5.1.0)
+      activerecord (>= 4.0.0)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
     haml (5.0.1)
@@ -197,6 +199,7 @@ DEPENDENCIES
   binding_of_caller
   devise
   ffaker
+  friendly_id (~> 5.1.0)
   haml-rails
   httparty
   jazz_fingers
