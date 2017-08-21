@@ -70,6 +70,7 @@ production:
   slack_webhook_url: *webhook_url*
   admin_email:
   - *admin_email*
+  - *admin_email*
   sendgrid_user: *sendgrid_email*
   sendgrid_password: *sendgrid_password*
   restricted_channels:
