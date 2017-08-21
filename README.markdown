@@ -49,6 +49,8 @@ development:
   slack_token: *token*
   slack_channel: *slack_channel*
   slack_webhook_url: *webhook_url*
+  slack_api_key: *apikey*
+  slack_api_secret: *apisecret*
   admin_email: *admin_email*
   sendgrid_user: *sendgrid_user*
   sendgrid_password: *sendgrid_password*
@@ -66,6 +68,8 @@ production:
   slack_token: *token*
   slack_channel: *slack_channel*
   slack_webhook_url: *webhook_url*
+  slack_api_key: *apikey*
+  slack_api_secret: *apisecret*  
   admin_email:
   - *admin_email*
   - *admin_email*
