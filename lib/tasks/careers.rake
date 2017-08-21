@@ -11,9 +11,9 @@ namespace :careers do
     if job_count != 0          
       options = {
         :body => {
-            :channel => "#apitest", 
+            :channel => "#jobopportunities", 
             :username => "midwestdevchat.com", 
-            :text => "#{job_count} new job(s) posted yesterday. <https://midwestdevchat.com/careers/all_jobs|Click Here> to see them."
+            :text => "#{job_count} new job(s) posted yesterday. <https://midwestdevchat.com/careers/|Click Here> to see them."
         }.to_json
       }
 
