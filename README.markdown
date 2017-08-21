@@ -45,33 +45,36 @@ production:
 ## secrets.yml
 ```ruby
 development:
-  title: # the name of the site
-  secret_key_base: # all about that base.
-  slack_token: # api access token from slack
-  slack_channel: C02GHRETZ # the slack id for the #general channel 
-  admin_email: # the email address of an admin who will get notified of a new member request
-  sendgrid_user: # sendgrid username
-  sendgrid_password: # sendgrid password
+  title: 'Midwest Dev Chat'
+  secret_key_base: *secret_base*
+  slack_domain: midwestdevchat
+  slack_token: *token*
+  slack_channel: *slack_channel*
+  slack_webhook_url: *webhook_url*
+  admin_email: *admin_email*
+  sendgrid_user: *sendgrid_user*
+  sendgrid_password: *sendgrid_password*
   restricted_channels:
-  - # array items
-  - # of restricted channels
-  - # by channel.name
+  - *restricted_channel*
+  - *restricted_channel*
 
 test:
-  secret_key_base: # all your base are belong to us, for tests.
+  secret_key_base: *secret_base*
 
 production:
-  title: # the name of the site
-  secret_key_base: # I'm rob base and I came to get down, to business.
-  slack_token: # api access token from slack
-  slack_channel: C02GHRETZ # the slack id for the #general channel 
-  admin_email: # the email address of an admin who will get notified of a new member request
-  sendgrid_user: # sendgrid username
-  sendgrid_password: # sendgrid password
+  title: 'Midwest Dev Chat'
+  secret_key_base: *secret_base*
+  slack_domain: midwestdevchat
+  slack_token: *token*
+  slack_channel: *slack_channel*
+  slack_webhook_url: *webhook_url*
+  admin_email:
+  - *admin_email*
+  sendgrid_user: *sendgrid_email*
+  sendgrid_password: *sendgrid_password*
   restricted_channels:
-  - # array items
-  - # of restricted channels
-  - # by channel.name
+  - *restricted_channel*
+  - *restricted_channel*
 ```
 
 ## That's it!
