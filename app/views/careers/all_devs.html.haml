@@ -42,9 +42,9 @@
             %td
               = link_to 'Resumé', dev.resume if dev.resume.present?
             %td
-              = link_to 'LinkedIn', dev.linkedin if dev.linkedin.present?   
+              = link_to dev.linkedin.split('/').last, dev.linkedin if dev.linkedin.present?   
             %td
-              = link_to 'Github', dev.github if dev.github.present?
+              = link_to dev.github.split('/').last, dev.github if dev.github.present?
 :javascript
   $(document).ready(function() {
       var typingTimer;
