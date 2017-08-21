@@ -6,9 +6,9 @@ namespace :careers do
   end
 
   task post_to_slack: :environment do
-    job_count = Job.where(post_date: DateTime.now-1.days)
+    job_count = Job.where("DATE(post_date) = ?", Date.yesterday).size
 
-    unless job_count.size == 0          
+    if job_count != 0          
       options = {
         :body => {
             :channel => "#apitest", 
