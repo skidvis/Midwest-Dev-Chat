@@ -11,32 +11,15 @@
         .col-sm-7
           = f.text_field :fullname, autofocus: true, class: 'form-control', required: 'required'          
       .form-group
+        %label.col-sm-5.control-label{for: 'slackhandle'} Slack handle
+        .col-sm-7
+          = f.text_field :slackhandle, autofocus: true, class: 'form-control'              
+      .form-group
         %label.col-sm-5.control-label{for: 'email'} Email:
         .col-sm-7
           = f.email_field :email, autofocus: true, class: 'form-control'
-      - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-        %div
-          Currently waiting confirmation for: #{resource.unconfirmed_email}
-      .form-group
-        %label.col-sm-5.control-label{for: 'password'} 
-          Password:
-          - if @minimum_password_length
-            %em 
-              (
-              = @minimum_password_length 
-              characters minimum)
-        .col-sm-7
-          = f.password_field :password, autocomplete: "off", class: 'form-control'
-      .form-group
-        %label.col-sm-5.control-label{for: 'password_confirmation'} Confirm Password:
-        .col-sm-7
-          = f.password_field :password_confirmation, autocomplete: "off", class: 'form-control'  
       %hr
-      %h2 Careers Data
-      .form-group
-        %label.col-sm-5.control-label{for: 'slackhandle'} Slack handle
-        .col-sm-7
-          = f.text_field :slackhandle, autofocus: true, class: 'form-control'         
+      %h2 Careers Data     
       .form-group
         %label.col-sm-5.control-label{for: 'career_status'} Career Availability:
         .col-sm-7
@@ -73,13 +56,7 @@
         %label.col-sm-5.control-label{for: 'github'} Github URL
         .col-sm-7
           = f.text_field :github, autofocus: true, class: 'form-control'                                          
-      %hr
-      .form-group
-        %label.col-sm-5.control-label{for: 'current_password'} 
-          Current Password:
-          %span{style: 'color: red;'} *
-        .col-sm-7
-          = f.password_field :current_password, autocomplete: "off", class: 'form-control'        
+      %hr      
       .form-group
         .col-sm-offset-6
           = f.submit "Update", class: 'btn btn-primary'    

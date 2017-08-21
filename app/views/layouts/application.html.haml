@@ -54,8 +54,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               = link_to current_user.fullname, :edit_user_registration, class: ' btn btn-info'
               = link_to 'Logoff', destroy_user_session_path, method: :delete, class: ' btn btn-default'          
             - else 
-              = link_to 'Login', :new_user_session, class: ' btn btn-info'
-              = link_to 'Sign Up', :new_user_registration, class: ' btn btn-default'
+              = link_to :user_slack_omniauth_authorize do 
+                %img{:src => "https://api.slack.com/img/sign_in_with_slack.png"}
+
   .flash_area
     %p.notice= notice
     %p.alert= alert        
