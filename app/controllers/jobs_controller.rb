@@ -24,6 +24,22 @@ class JobsController < ApplicationController
     end
   end
 
+  def edit    
+    @job = Job.friendly.find(params[:id])
+  end
+
+  def update
+    @job = Job.friendly.find(params[:id])
+    @job.post_date = DateTime.now
+
+    if @job.update_attributes(job_params)
+      redirect_to @job
+    else
+      flash[:notice] = @job.errors.messages.to_a.join(' ')
+      render 'edit'
+    end
+  end
+
   def show
     @job = Job.friendly.find(params[:id])
   end

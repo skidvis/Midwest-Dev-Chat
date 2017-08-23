@@ -1,0 +1,36 @@
+.row
+  .col-md-7.col-md-offset-2
+    %h2
+      Edit Opportunity
+    = form_for(@job, html: { class: 'form-horizontal'}) do |f|
+      .form-group
+        %label.col-sm-4.control-label{for: 'title'} Title/Position:
+        .col-sm-7
+          = f.text_field :title, autofocus: true, class: 'form-control', required: 'required'    
+      .form-group
+        %label.col-sm-4.control-label{for: 'company'} Company:
+        .col-sm-7
+          = f.text_field :company, autofocus: true, class: 'form-control', required: 'required'   
+      .form-group
+        %label.col-sm-4.control-label{for: 'url'}URL:
+        .col-sm-7
+          = f.text_field :url, autofocus: true, class: 'form-control', required: 'required', plackeholder: 'http://'      
+      .form-group
+        %label.col-sm-4.control-label{for: 'remote_options'} Remote Options:
+        .col-sm-7
+          = f.select(:remote_options, options_for_select(["No Remote", "Some Remote", "Mostly Remote", "Remote Only"], selected: f.object.remote_options),{}, {class: 'form-control'})          
+      .form-group
+        %label.col-sm-4.control-label{for: 'description'}Description:
+        .col-sm-7
+          = f.text_field :description, autofocus: true, class: 'form-control'   
+      .form-group
+        %label.col-sm-4.control-label Author:
+        %label.col-sm-7.control-label{style: 'text-align: left;'}
+          = current_user.fullname
+      .form-group
+        %label.col-sm-4.control-label Expires:
+        %label.col-sm-7.control-label{style: 'text-align: left;'}
+          = DateTime.now+30
+      .form-group
+        .col-sm-offset-6
+          = f.submit "Save", class: 'btn btn-primary'      
