@@ -35,12 +35,13 @@ pre{
 .careers{
     ul.devs, ul.dev, ul.jobs, ul.job {
         list-style-type: none;
-        padding: 0;
+        padding: 5px;
     }
 
     ul.dev{
         li.fullname{
             padding-left: 0;
+            font-weight: bold;
         }
 
         li{
