@@ -47,15 +47,15 @@
       .form-group
         %label.col-sm-5.control-label{for: 'resume'} Resume URL
         .col-sm-7
-          = f.text_field :resume, autofocus: true, class: 'form-control'  
+          = f.text_field :resume, autofocus: true, class: 'form-control', placeholder: 'http://'
       .form-group
         %label.col-sm-5.control-label{for: 'linkedin'} LinkedIn URL
         .col-sm-7
-          = f.text_field :linkedin, autofocus: true, class: 'form-control'  
+          = f.text_field :linkedin, autofocus: true, class: 'form-control', placeholder: 'http://'
       .form-group
         %label.col-sm-5.control-label{for: 'github'} Github URL
         .col-sm-7
-          = f.text_field :github, autofocus: true, class: 'form-control'                                          
+          = f.text_field :github, autofocus: true, class: 'form-control', placeholder: 'http://'                                       
       %hr      
       .form-group
         .col-sm-offset-6

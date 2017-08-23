@@ -8,6 +8,8 @@ class Job < ActiveRecord::Base
   scope :title_like, -> (title) { where("title like ?", "%#{title}%")}
   scope :description_like, -> (description) { where("description like ?", "%#{description}%")}
 
+  validates :url, :url => true
+
   def slug_candidates
     [
       :title,

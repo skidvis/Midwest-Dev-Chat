@@ -3,6 +3,9 @@ class User < ActiveRecord::Base
   friendly_id :slug_candidates, use: :slugged
 
   validates :slackhandle, presence: true, uniqueness: { scope: :slackhandle,  message: "already exists" }
+  validates :resume, :url => true
+  validates :linkedin, :url => true
+  validates :github, :url => true
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
