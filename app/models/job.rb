@@ -4,6 +4,10 @@ class Job < ActiveRecord::Base
 
   belongs_to :user
 
+  scope :remote_options, -> (remote_options) { where remote_options: remote_options }
+  scope :title_like, -> (title) { where("title like ?", "%#{title}%")}
+  scope :description_like, -> (description) { where("description like ?", "%#{description}%")}
+
   def slug_candidates
     [
       :title,

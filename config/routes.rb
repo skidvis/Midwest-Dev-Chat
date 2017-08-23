@@ -5,6 +5,13 @@ Rails.application.routes.draw do
     get '/users/sign_out' => 'devise/sessions#destroy' 
   end
 
+  namespace :api, defaults: { format: :json } do
+    scope module: :v1 do
+      resources :devs
+      resources :jobs
+    end
+  end
+
   get 'home/index'
   root 'home#index'
 

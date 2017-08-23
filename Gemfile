@@ -17,6 +17,7 @@ gem 'devise'
 gem 'friendly_id', '~> 5.1.0'
 gem 'omniauth'
 gem 'omniauth-slack', :git => 'https://github.com/ginjo/omniauth-slack.git', :branch => 'auth-hash-fixes'
+gem 'active_model_serializers', '~> 0.10.0'
 
 group :development, :test do
   gem 'jazz_fingers'
