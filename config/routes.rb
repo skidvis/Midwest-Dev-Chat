@@ -7,8 +7,8 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: { format: :json } do
     scope module: :v1 do
-      resources :devs
-      resources :jobs
+      resources :devs, only: [:index]
+      resources :jobs, only: [:index]
     end
   end
 
