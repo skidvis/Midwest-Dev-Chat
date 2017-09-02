@@ -22,6 +22,13 @@
       %label.col-sm-4.control-label{for: 'description'} Description:
       %label.col-sm-7.control-label{style: 'text-align: left;'}= @job.description
     .row
+      %label.col-sm-4.control-label Share To:
+      %label.col-sm-7.control-label.share-links{style: 'text-align: left; font-size:20px;'}
+        = link_to CareerHelper.get_facebook_url(@job), target: :blank do
+          %i.fa.fa-facebook-official
+        = link_to CareerHelper.get_twitter_url(@job), target: :blank do
+          %i.fa.fa-twitter        
+    .row
       %hr  
     .row
       %label.col-sm-4.control-label Author:
