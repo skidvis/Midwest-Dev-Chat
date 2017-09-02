@@ -5,11 +5,11 @@ module CareerHelper
   end
 
   def self.get_encoded_url object
-    CGI.escape(get_url(object)).gsub!('-', '%2D')
+    encoded_url = CGI.escape(get_url(object))
   end
 
   def self.get_facebook_url object
-    "https://www.facebook.com/sharer/sharer.php?u=#{get_encoded_url(object)}"
+    "https://www.facebook.com/plugins/share_button.php?href=#{get_encoded_url(object)}"
   end
 
   def self.get_twitter_url object
