@@ -4,7 +4,7 @@
       Newest Opportunities
       %span.see_all
         =link_to '(see all)', :careers_all_jobs    
-    %ul.jobs 
+    %ul.jobs.match
       - @jobs.each do |job|
         %li 
           %ul.dev
@@ -24,18 +24,28 @@
                 %span.remote
                   = "'#{job.remote_options}'"
                 ]
-      %li
-        %hr
-        - if current_user        
-          = link_to 'Post An Opportunity', :jobs, class: 'btn btn-default'
-        -else 
-          = link_to 'Post An Opportunity', :user_slack_omniauth_authorize, class: 'btn btn-default'
+            %li.child.share
+              %span.title share_to:
+              %span
+                [
+                = link_to "'facebook'", CareerHelper.get_facebook_url(job), target: :blank
+                = link_to "'twitter'", CareerHelper.get_twitter_url(job), target: :blank
+                ]                   
+    %hr
+    - if current_user        
+      = link_to :jobs, class: 'btn btn-default' do
+        %i.fa.fa-plus-circle
+        Post An Opportunity
+    -else 
+      = link_to :user_slack_omniauth_authorize, class: 'btn btn-default' do
+        %i.fa.fa-plus-circle
+        Post An Opportunity          
   .col-md-5.col-md-offset-1
     %h3 
       Newest Available Devs
       %span.see_all
         =link_to '(see all)', :careers_all_devs
-    %ul.devs 
+    %ul.devs.match
       - @devs.each do |dev|
         %li 
           %ul.dev
@@ -54,16 +64,21 @@
                 = link_to "'resume'", dev.resume if dev.resume.present?
                 = link_to "'linkedin'", dev.linkedin if dev.linkedin.present?
                 = link_to "'github'", dev.github if dev.github.present?
-                ]
-      %li
-        %hr
-        - if current_user
-          = link_to 'Update your availability', :edit_user_registration, class: 'btn btn-default'
-        - else
-          = link_to 'Update your availability', :user_slack_omniauth_authorize, class: 'btn btn-default'
+                ]           
+    %hr
+    - if current_user
+      = link_to :edit_user_registration, class: 'btn btn-default' do
+        %i.fa.fa-suitcase
+        Update your availability
+    - else
+      = link_to :user_slack_omniauth_authorize, class: 'btn btn-default' do
+        %i.fa.fa-suitcase          
+        Update your availability
           
 :javascript
   $(document).ready(function() {
+      $('.match').matchHeight();
+
       $('li.fullname').bind('click', function(){
         var $hidden_kids = $(this).parent().children('.hidden');
         var $span_arrow = $(this).children('span.arrow');;

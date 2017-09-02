@@ -26,6 +26,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 %link{:href => "//cdn.rawgit.com/noelboss/featherlight/1.2.0/release/featherlight.min.css", :rel => "stylesheet", :title => "Featherlight Styles", :type => "text/css"}/
 %script{:charset => "utf-8", :src => "//cdn.rawgit.com/noelboss/featherlight/1.2.0/release/featherlight.min.js", :type => "text/javascript"}
 
+%link{href: "//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css", rel: "stylesheet", integrity: "sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN", crossorigin: "anonymous"}
+%script{:charset => "utf-8", :src => "//cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.2/jquery.matchHeight-min.js", :type => "text/javascript"}
+
 
 %meta{:content => "Midwest Dev Chat", :property => "og:title"}/
 %meta{:content => "website", :property => "og:type"}/
@@ -44,8 +47,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       = link_to 'MidwestDevChat.com', '/', class: 'page-title'
       .nav.pull-right
         %ul
-          %li= link_to 'Careers', :careers, class: ' btn btn-default'
-          %li= link_to 'Contribute on Github', 'https://github.com/skidvis/Midwest-Dev-Chat', class: ' btn btn-default'
+          %li
+            = link_to :careers, class: ' btn btn-default' do
+              %i.fa.fa-handshake-o
+              Careers
+          %li
+            = link_to 'https://github.com/skidvis/Midwest-Dev-Chat', class: ' btn btn-default' do
+              %i.fa.fa-github
+              Contribute on Github
           %li
             = link_to 'http://cultofthepartyparrot.com', title: 'Check out the Party Parrot!', class: ' btn btn-default parrot' do
               %img{src: '/emojis/rightparrot.gif', alt: 'Party Parrot gif'}

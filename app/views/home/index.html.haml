@@ -41,7 +41,9 @@
             = select_tag "interest", options_for_select([ "Select One..", "Development" ], "Select One.."), class: 'form-control'
         .form-group
           .col-sm-9.col-sm-offset-3
-            #submit_button.btn.btn-default Request Invite     
+            #submit_button.btn.btn-default 
+              %i.fa.fa-send
+              Request Invite     
 .row
   .col-md-12
     .channels.rounded-lite
