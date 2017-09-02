@@ -5,7 +5,7 @@ module CareerHelper
   end
 
   def self.get_encoded_url object
-    CGI.escape(get_url(object))
+    CGI.escape(get_url(object)).gsub!('-', '%2D')
   end
 
   def self.get_facebook_url object
