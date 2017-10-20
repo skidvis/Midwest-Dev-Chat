@@ -25,7 +25,7 @@
               = link_to job.url, job.url
             %td
               = job.post_date
-            %td 
+            %td{style: 'width:150px;'}
               #{link_to "Edit", edit_job_path(job), class: 'btn btn-info pull-left'} 
               #{button_to "Delete", job_path(job.id), data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-warning pull-right'} 
 :javascript
