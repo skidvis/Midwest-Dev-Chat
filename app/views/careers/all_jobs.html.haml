@@ -28,7 +28,7 @@
             %td
               = job.remote_options              
             %td
-              = job.post_date
+              = job.post_date.to_s(:short)
 :javascript
   $(document).ready(function() {
       var typingTimer;
