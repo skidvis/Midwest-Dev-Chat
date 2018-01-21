@@ -12,6 +12,15 @@ I made this in a day, I'm not very good at Ruby/Rails, I'm not the best designer
 I'm fairly certain there's better ways of handling some of the features I added, and that there are features I haven't even considered which would be awesome. 
 If you have the skills to improve or add features, please help us out!
 
+# Dockerized for your pleasure
+Now with docker files to make local setup a breeze. 
+
+* Install Docker
+* cd into the app's folder
+* add: `host: db` in the `database.yml` file
+* run `docker-compose build`
+* run `docker-compose up`
+
 # Gotchas
 Two files are missing from this repo. The database.yml and secrets.yml from the config folder.
 They have, um.. secrets, so I didn't think it would be wise to check them in. 

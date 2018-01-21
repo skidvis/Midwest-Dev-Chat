@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 
 gem 'rails', '4.2.0'
-gem 'pg'
+gem 'pg', '0.21.0'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 # gem 'therubyracer', platforms: :ruby
@@ -19,6 +19,8 @@ gem 'omniauth'
 gem 'omniauth-slack', :git => 'https://github.com/ginjo/omniauth-slack.git', :branch => 'auth-hash-fixes'
 gem 'active_model_serializers', '~> 0.10.0'
 gem 'valid_url'
+gem 'yard', '~> 0.9.11'
+gem 'nokogiri', '~> 1.8.1'
 
 group :development, :test do
   gem 'jazz_fingers'

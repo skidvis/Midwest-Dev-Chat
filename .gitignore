@@ -20,3 +20,4 @@
 config/database.yml
 config/secrets.yml
 /.idea
+/postgres-data
