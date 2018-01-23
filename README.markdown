@@ -18,8 +18,11 @@ Now with docker files to make local setup a breeze.
 * Install Docker
 * cd into the app's folder
 * add: `host: db` in the `database.yml` file
+* create a docker volume for the db: `docker volume create --name=postgresql-volume`
 * run `docker-compose build`
 * run `docker-compose up`
+* in a seperate terminal window, run the db setup commands..
+* `docker exec *container name or id* bundle exec rake db:create db:migrate
 
 # Gotchas
 Two files are missing from this repo. The database.yml and secrets.yml from the config folder.
