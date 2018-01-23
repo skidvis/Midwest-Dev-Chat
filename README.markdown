@@ -22,7 +22,7 @@ Now with docker files to make local setup a breeze.
 * run `docker-compose build`
 * run `docker-compose up`
 * in a seperate terminal window, run the db setup commands..
-* `docker exec *container name or id* bundle exec rake db:create db:migrate
+* `docker exec *container name or id* bundle exec rake db:create db:migrate`
 
 # Gotchas
 Two files are missing from this repo. The database.yml and secrets.yml from the config folder.
