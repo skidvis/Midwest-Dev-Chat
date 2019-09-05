@@ -1,16 +1,9 @@
 .row
+.row
   .col-md-8
     .messages.bigitem
-      %ul
-        %li.description
-          = simple_format "The newest 15 messages in the super-cool <strong>##{@current_channel}</strong> channel."
-        - @messages.each do |message|
-          - new_message = LinkHelper.process_links(message)
-          - if new_message.present?
-            %li
-              = new_message.html_safe
-        %li.description
-          *Usernames have been changed to protect the innocent.
+      %h2
+        Nothing to see here.
 
   .col-md-4
     - if cookies[:signed_up]
