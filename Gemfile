@@ -20,7 +20,7 @@ gem 'omniauth-slack', :git => 'https://github.com/ginjo/omniauth-slack.git', :br
 gem 'active_model_serializers', '~> 0.10.0'
 gem 'valid_url'
 gem 'yard', '~> 0.9.11'
-gem 'nokogiri', '~> 1.8.1'
+gem 'nokogiri', '~> 1.10.8'
 
 group :development, :test do
   gem 'jazz_fingers'
